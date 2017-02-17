@@ -57,10 +57,6 @@ class ReactCardFlip extends React.Component {
 
 		return (
 			<div className="react-card-flip" style={styles.container}>
-				<p>
-					Click the button to flip the card!
-				</p>
-
 				<div
 					className="react-card-flipper"
 					style={this.state.isFlipped ? styles.flipperFlip : styles.flipper}>

@@ -1,6 +1,6 @@
 {
   "name": "react-card-flip",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "ReactCardFlip",
   "main": "lib/ReactCardFlip.js",
   "author": "Aaron Wong",
@@ -25,7 +25,7 @@
     "react-dom": "^15.4.2"
   },
   "peerDependencies": {
-    "react": "^15.4.2"
+    "react": ">=0.13.3"
   },
   "browserify-shim": {
     "react": "global:React"

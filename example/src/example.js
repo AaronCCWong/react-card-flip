@@ -35,6 +35,10 @@ class App extends React.Component {
 
 		return (
 			<div style={styles.example}>
+				<p>
+					Click the button to flip the card!
+				</p>
+
 				<ReactCardFlip isFlipped={this.state.isFlipped}>
 					<div key="front" style={styles.card}>
 						<img
