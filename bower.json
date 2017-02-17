@@ -1,0 +1,29 @@
+{
+  "name": "react-card-flip",
+  "version": "0.0.0",
+  "description": "ReactCardFlip",
+  "main": "dist/react-card-flip.min.js",
+  "homepage": "https://github.com/AaronCCWong/react-card-flip",
+  "authors": [
+    "Aaron Wong"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "react",
+    "react-component"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".editorconfig",
+    ".gitignore",
+    "package.json",
+    "src",
+    "node_modules",
+    "example",
+    "test"
+  ]
+}
