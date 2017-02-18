@@ -82,6 +82,4 @@ ReactCardFlip.propTypes = {
 	isFlipped: React.PropTypes.bool
 };
 
-
-
 export default ReactCardFlip;
