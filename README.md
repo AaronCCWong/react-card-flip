@@ -36,7 +36,7 @@ available as a global variable.
 
 To use this component, first import ReactCardFlip:
 
-```
+```javascript
 import ReactCardFlip from 'react-card-flip';
 ```
 
@@ -50,7 +50,7 @@ that has an onClick handler for each side of the card.
 The animation itself will be controlled by the prop `isFlipped`. Use this to
 control whether to show the front or the back of the card.
 
-```
+```javascript
 class App extends React.Component {
   component() {
     this.state = {
@@ -67,12 +67,12 @@ class App extends React.Component {
   render() {
     return (
       <ReactCardFlip isFlipped={this.state.isFlipped}>
-        <FrontComponent key="front">
+        <YOUR_FRONT_CCOMPONENT key="front">
           This is the front of the card.
           <button onClick={this.handleClick}>Click to flip</button>
         </FrontComponent>
 
-        <BackComponent key="back">
+        <YOUR_BACK_COMPONENT key="back">
           This is the back of the card.
           <button onClick={this.handleClick}>Click to flip</button>
         </BackComponent>
@@ -81,6 +81,16 @@ class App extends React.Component {
   }
 }
 ```
+
+`YOUR_FRONT_CCOMPONENT` and `YOUR_BACK_COMPONENT` here are meant to be the two
+components that you plan to use for the card, one for the front of the card
+and one for the back of the card.
+
+The most important part is providing the key props with the values `front` and
+`back` to your two components so that `ReactCardFlip` can differentiate between
+the two components. `key=front` tells `ReactCardFlip` to use that component as
+the front of the card. Similarly, `key=back` tells `ReactCardFlip` to use that
+component as the back of the card.
 
 ### Properties
 
