@@ -88,8 +88,8 @@ and one for the back of the card.
 
 The most important part is providing the key props with the values `front` and
 `back` to your two components so that `ReactCardFlip` can differentiate between
-the two components. `key=front` tells `ReactCardFlip` to use that component as
-the front of the card. Similarly, `key=back` tells `ReactCardFlip` to use that
+the two components. `key="front"` tells `ReactCardFlip` to use that component as
+the front of the card. Similarly, `key="back"` tells `ReactCardFlip` to use that
 component as the back of the card.
 
 ### Properties
