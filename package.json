@@ -1,6 +1,6 @@
 {
   "name": "react-card-flip",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "ReactCardFlip",
   "main": "lib/ReactCardFlip.js",
   "author": "Aaron Wong",
