@@ -57,13 +57,13 @@ var ReactCardFlip = (function (_React$Component) {
 				flipper: {
 					position: 'relative',
 					transformStyle: 'preserve-3d',
-					transition: '0.6s'
+					transition: this.props.flipSpeedBackToFront + 's'
 				},
 				flipperFlip: {
 					position: 'relative',
 					transform: 'rotateY(180deg)',
 					transformStyle: 'preserve-3d',
-					transition: '0.6s'
+					transition: this.props.flipSpeedFrontToBack + 's'
 				},
 				front: {
 					WebkitBackfaceVisibility: 'hidden',
@@ -120,7 +120,15 @@ ReactCardFlip.propTypes = {
 			return new Error(componentName + ' requires two children.');
 		}
 	},
+	flipSpeedBackToFront: _react2['default'].PropTypes.number,
+	flipSpeedFrontToBack: _react2['default'].PropTypes.number,
 	isFlipped: _react2['default'].PropTypes.bool
+};
+
+ReactCardFlip.defaultProps = {
+	flipSpeedBackToFront: 0.6,
+	flipSpeedFrontToBack: 0.6,
+	isFlipped: false
 };
 
 exports['default'] = ReactCardFlip;
