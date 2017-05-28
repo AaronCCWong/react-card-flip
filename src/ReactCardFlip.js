@@ -29,13 +29,13 @@ class ReactCardFlip extends React.Component {
 			flipper: {
 				position: 'relative',
 				transformStyle: 'preserve-3d',
-				transition: '0.6s'
+				transition: `${this.props.flipSpeedBackToFront}s`
 			},
 			flipperFlip: {
 				position: 'relative',
 				transform: 'rotateY(180deg)',
 				transformStyle: 'preserve-3d',
-				transition: '0.6s'
+				transition: `${this.props.flipSpeedFrontToBack}s`
 			},
 			front: {
 				WebkitBackfaceVisibility: 'hidden',
@@ -84,7 +84,15 @@ ReactCardFlip.propTypes = {
 			return new Error(`${componentName} requires two children.`);
 		}
 	},
+	flipSpeedBackToFront: React.PropTypes.number,
+	flipSpeedFrontToBack: React.PropTypes.number,
 	isFlipped: React.PropTypes.bool
+};
+
+ReactCardFlip.defaultProps = {
+	flipSpeedBackToFront: 0.6,
+	flipSpeedFrontToBack: 0.6,
+	isFlipped: false
 };
 
 export default ReactCardFlip;
