@@ -84,9 +84,11 @@ class App extends React.Component {
 
 ### Properties
 
-| Props     | Type    | Description                                                |
-|-----------|---------|------------------------------------------------------------|
-| isFlipped | bool    | False to show the front of the card, true to show the back |
+| Props                | Type    | Description                                                                                                                 | Default   |
+|----------------------|---------|-----------------------------------------------------------------------------------------------------------------------------|-----------|
+| isFlipped            | bool    | False to show the front of the card, true to show the back                                                                  | undefined |
+| flipSpeedBackToFront | number  | The speed of the flip animation when the card flips from back to front, the higher the number the slower the flip animation | 0.6       |
+| flipSpeedFrontToBack | number  | The speed of the flip animation when the card flips from front to back, the higher the number the slower the flip animation | 0.6       |
 
 ## Development (`src`, `lib` and the build process)
 
