@@ -1,70 +1,55 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactCardFlip from 'react-card-flip';
 
-class App extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			isFlipped: false
-		};
-		this.handleClick = this.handleClick.bind(this);
-	}
+import Example from './Example.jsx';
+import SlowerExample from './SlowerExample.jsx';
+import FasterExample from './FasterExample.jsx';
 
-	handleClick(event) {
-		event.preventDefault();
-		this.setState({ isFlipped: !this.state.isFlipped });
-	}
+const App = () => {
+	const styles = {
+		card: {
+			border: '1px solid #eeeeee',
+			borderRadius: '3px',
+			padding: '15px',
+			width: '250px'
+		},
+		image: {
+			height: '200px',
+			width: '250px'
+		}
+	};
 
-	render() {
-		var styles = {
-			example: {
-				height: '75vh',
-				width: '250px'
-			},
-			card: {
-				border: '1px solid #eeeeee',
-				borderRadius: '3px',
-				padding: '15px',
-				width: '250px'
-			},
-			image: {
-				width: '250px'
-			}
-		};
+	return (
+		<div>
+			<p>
+				Click the button to flip the card!
+			</p>
 
-		return (
-			<div style={styles.example}>
-				<p>
-					Click the button to flip the card!
-				</p>
+			<section className="example-section">
+				<h3>
+					Default card flip
+				</h3>
 
-				<ReactCardFlip isFlipped={this.state.isFlipped}>
-					<div key="front" style={styles.card}>
-						<img
-							style={styles.image}
-							src="//www.petfinder.com/wp-content/uploads/2012/11/dog-how-to-select-your-new-best-friend-thinkstock99062463.jpg"
-						/>
+				<Example styles={styles} />
+			</section>
 
-						<button onClick={this.handleClick}>
-							Flip Card
-						</button>
-					</div>
+			<section className="example-section">
+				<h3>
+					Slower card flip
+				</h3>
 
-					<div key="back" style={styles.card}>
-						<img
-							style={styles.image}
-							src="//img.buzzfeed.com/buzzfeed-static/static/2014-04/enhanced/webdr06/4/16/enhanced-11136-1396643149-13.jpg?no-auto"
-						/>
+				<SlowerExample styles={styles} />
+			</section>
 
-						<button onClick={this.handleClick}>
-							Flip Card
-						</button>
-					</div>
-				</ReactCardFlip>
-			</div>
-		);
-	}
+			<section className="example-section">
+				<h3>
+					Faster card flip
+				</h3>
+
+				<FasterExample styles={styles} />
+			</section>
+		</div>
+	);
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
