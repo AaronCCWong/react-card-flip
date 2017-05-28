@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ReactCardFlip extends React.Component {
 	constructor(props) {
@@ -84,9 +85,9 @@ ReactCardFlip.propTypes = {
 			return new Error(`${componentName} requires two children.`);
 		}
 	},
-	flipSpeedBackToFront: React.PropTypes.number,
-	flipSpeedFrontToBack: React.PropTypes.number,
-	isFlipped: React.PropTypes.bool
+	flipSpeedBackToFront: PropTypes.number,
+	flipSpeedFrontToBack: PropTypes.number,
+	isFlipped: PropTypes.bool
 };
 
 ReactCardFlip.defaultProps = {
