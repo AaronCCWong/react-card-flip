@@ -99,6 +99,7 @@ component as the back of the card.
 | isFlipped            | bool    | False to show the front of the card, true to show the back                                                                  | undefined |
 | flipSpeedBackToFront | number  | The speed of the flip animation when the card flips from back to front, the higher the number the slower the flip animation | 0.6       |
 | flipSpeedFrontToBack | number  | The speed of the flip animation when the card flips from front to back, the higher the number the slower the flip animation | 0.6       |
+| infinite             | bool    | False to rotate in opposite directions on both sides of the card, true to rotate in the same direction                      | false     |
 
 ## Development (`src`, `lib` and the build process)
 

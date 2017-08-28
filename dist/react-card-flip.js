@@ -880,7 +880,8 @@ var ReactCardFlip = (function (_React$Component) {
 
 		_get(Object.getPrototypeOf(ReactCardFlip.prototype), 'constructor', this).call(this, props);
 		this.state = {
-			isFlipped: this.props.isFlipped
+			isFlipped: this.props.isFlipped,
+			rotation: 0
 		};
 	}
 
@@ -889,6 +890,7 @@ var ReactCardFlip = (function (_React$Component) {
 		value: function componentWillReceiveProps(nextProps) {
 			if (nextProps.isFlipped !== this.props.isFlipped) {
 				this.setState({ isFlipped: nextProps.isFlipped });
+				this.setState({ rotation: this.state.rotation + 180 });
 			}
 		}
 	}, {
@@ -908,12 +910,13 @@ var ReactCardFlip = (function (_React$Component) {
 				},
 				flipper: {
 					position: 'relative',
+					transform: 'rotateY(' + (this.props.infinite ? this.state.rotation : 0) + 'deg)',
 					transformStyle: 'preserve-3d',
 					transition: this.props.flipSpeedBackToFront + 's'
 				},
 				flipperFlip: {
 					position: 'relative',
-					transform: 'rotateY(180deg)',
+					transform: 'rotateY(' + (this.props.infinite ? this.state.rotation : 180) + 'deg)',
 					transformStyle: 'preserve-3d',
 					transition: this.props.flipSpeedFrontToBack + 's'
 				},
@@ -974,12 +977,14 @@ ReactCardFlip.propTypes = {
 	},
 	flipSpeedBackToFront: _propTypes2['default'].number,
 	flipSpeedFrontToBack: _propTypes2['default'].number,
+	infinite: _propTypes2['default'].bool,
 	isFlipped: _propTypes2['default'].bool
 };
 
 ReactCardFlip.defaultProps = {
 	flipSpeedBackToFront: 0.6,
 	flipSpeedFrontToBack: 0.6,
+	infinite: false,
 	isFlipped: false
 };
 
