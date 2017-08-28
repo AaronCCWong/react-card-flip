@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Example from './Example.jsx';
 import SlowerExample from './SlowerExample.jsx';
 import FasterExample from './FasterExample.jsx';
+import RevolvingExample from './RevolvingExample.jsx';
 
 const App = () => {
 	const styles = {
@@ -48,8 +49,16 @@ const App = () => {
 
 				<FasterExample styles={styles} />
 			</section>
+
+			<section className="example-section">
+				<h3>
+					Revolving door card flip
+				</h3>
+
+				<RevolvingExample styles={styles} />
+			</section>
 		</div>
 	);
-}
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));

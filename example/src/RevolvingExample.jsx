@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ReactCardFlip from 'react-card-flip';
 
-class FasterExample extends Component  {
+class RevolvingExample extends Component  {
   constructor() {
     super();
     this.state = {
@@ -19,14 +19,11 @@ class FasterExample extends Component  {
 
   render() {
     return (
-      <ReactCardFlip
-        isFlipped={this.state.isFlipped}
-        flipSpeedBackToFront={0.1}
-        flipSpeedFrontToBack={0.1}>
+      <ReactCardFlip isFlipped={this.state.isFlipped} infinite>
         <div key="front" style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
-            src="//cdn2-www.dogtime.com/assets/uploads/gallery/labrador-retriever-dog-breed-pictures/labrador-retriever-dog-pictures-6.jpg"
+            src="//www.planwallpaper.com/static/images/02_GpKGIi8.jpg"
           />
 
           <button onClick={this.handleClick}>
@@ -37,7 +34,7 @@ class FasterExample extends Component  {
         <div key="back" style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
-            src="//www.planwallpaper.com/static/images/dogs1_lm4Ye34.jpg"
+            src="//www.planwallpaper.com/static/images/147083304-dogs-home-alone-all-day-632x475_TeDlBdS.jpg"
           />
 
           <button onClick={this.handleClick}>
@@ -49,8 +46,8 @@ class FasterExample extends Component  {
   }
 };
 
-FasterExample.propTypes = {
+RevolvingExample.propTypes = {
   styles: PropTypes.object
 };
 
-export default FasterExample;
+export default RevolvingExample;
