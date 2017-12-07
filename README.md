@@ -52,7 +52,8 @@ control whether to show the front or the back of the card.
 
 ```javascript
 class App extends React.Component {
-  component() {
+  constructor() {
+    super();
     this.state = {
       isFlipped: false
     };
