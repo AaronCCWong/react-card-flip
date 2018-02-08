@@ -14,7 +14,6 @@ describe('Flipping', () => {
 				</div>
 			</ReactCardFlip>
 		);
-		console.log(wrapper.find('.react-card-flipper').props().style.transform);
 		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
 			'rotateY(0deg)'
 		);
