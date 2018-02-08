@@ -108,6 +108,14 @@ component as the back of the card.
 
 To build, watch and serve the examples (which will also watch the component source), run `npm start`. If you just want to watch changes to `src` and rebuild `lib`, run `npm run watch` (this is useful if you are working with `npm link`).
 
+## Testing
+
+To run tests for this project run one of the following commands:
+
+* `npm test` - Runs tests then exits
+* `npm test:watch` - Runs tests in watch mode
+* `npm test:coverage` - Runs tests and creates a coverage report
+
 ## Contributing
 
 Fork this repo, add your proposed features and make a pull request. I will
