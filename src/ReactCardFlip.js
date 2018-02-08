@@ -6,7 +6,7 @@ class ReactCardFlip extends React.Component {
 		super(props);
 		this.state = {
 			isFlipped: this.props.isFlipped,
-			rotation: 0,
+			rotation: 0
 		};
 	}
 
@@ -31,13 +31,17 @@ class ReactCardFlip extends React.Component {
 			},
 			flipper: {
 				position: 'relative',
-				transform: `rotateY(${this.props.infinite ? this.state.rotation : 0}deg)`,
+				transform: `rotateY(${
+					this.props.infinite ? this.state.rotation : 0
+				}deg)`,
 				transformStyle: 'preserve-3d',
 				transition: `${this.props.flipSpeedBackToFront}s`
 			},
 			flipperFlip: {
 				position: 'relative',
-				transform: `rotateY(${this.props.infinite ? this.state.rotation : 180}deg)`,
+				transform: `rotateY(${
+					this.props.infinite ? this.state.rotation : 180
+				}deg)`,
 				transformStyle: 'preserve-3d',
 				transition: `${this.props.flipSpeedFrontToBack}s`
 			},
@@ -50,7 +54,8 @@ class ReactCardFlip extends React.Component {
 				transform: 'rotateY(0deg)',
 				transformStyle: 'preserve-3d',
 				width: '100%',
-				zIndex: '2'
+				zIndex: '2',
+				...this.props.cardStyles.front
 			},
 			back: {
 				WebkitBackfaceVisibility: 'hidden',
@@ -60,7 +65,8 @@ class ReactCardFlip extends React.Component {
 				transform: 'rotateY(180deg)',
 				transformStyle: 'preserve-3d',
 				top: '0',
-				width: '100%'
+				width: '100%',
+				...this.props.cardStyles.back
 			}
 		};
 
@@ -68,7 +74,8 @@ class ReactCardFlip extends React.Component {
 			<div className="react-card-flip" style={styles.container}>
 				<div
 					className="react-card-flipper"
-					style={this.state.isFlipped ? styles.flipperFlip : styles.flipper}>
+					style={this.state.isFlipped ? styles.flipperFlip : styles.flipper}
+				>
 					<div className="react-card-front" style={styles.front}>
 						{this.getComponent('front')}
 					</div>
@@ -83,6 +90,10 @@ class ReactCardFlip extends React.Component {
 }
 
 ReactCardFlip.propTypes = {
+	cardStyles: PropTypes.shape({
+		front: PropTypes.object,
+		back: PropTypes.object
+	}),
 	children: (props, propName, componentName) => {
 		if (React.Children.count(props[propName]) !== 2) {
 			return new Error(`${componentName} requires two children.`);
@@ -91,14 +102,18 @@ ReactCardFlip.propTypes = {
 	flipSpeedBackToFront: PropTypes.number,
 	flipSpeedFrontToBack: PropTypes.number,
 	infinite: PropTypes.bool,
-	isFlipped: PropTypes.bool,
+	isFlipped: PropTypes.bool
 };
 
 ReactCardFlip.defaultProps = {
+	cardStyles: {
+		front: {},
+		back: {}
+	},
 	flipSpeedBackToFront: 0.6,
 	flipSpeedFrontToBack: 0.6,
 	infinite: false,
-	isFlipped: false,
+	isFlipped: false
 };
 
 export default ReactCardFlip;

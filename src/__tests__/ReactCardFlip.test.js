@@ -81,4 +81,32 @@ describe('Rendering', () => {
 			);
 		}).toThrow();
 	});
+
+	it('allows overriding the card container styles', () => {
+		const styles = {
+			front: {
+				position: 'absolute'
+			},
+			back: {
+				position: 'fixed'
+			}
+		};
+		const wrapper = mount(
+			<ReactCardFlip isFlipped cardStyles={styles}>
+				<div key="front">
+					<p id="front_text">Front</p>
+				</div>
+				<div key="back">
+					<p id="back_text">Back</p>
+				</div>
+			</ReactCardFlip>
+		);
+
+		expect(wrapper.find('.react-card-front').props().style.position).toBe(
+			'absolute'
+		);
+		expect(wrapper.find('.react-card-back').props().style.position).toBe(
+			'fixed'
+		);
+	});
 });
