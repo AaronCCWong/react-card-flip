@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/AaronCCWong/react-card-flip/badge.svg?branch=master)](https://coveralls.io/github/AaronCCWong/react-card-flip?branch=master)
+
 # ReactCardFlip
 
 React Card Flip is allows you to use the card flipping animation. Credit for the
