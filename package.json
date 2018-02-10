@@ -5,7 +5,7 @@
   "main": "lib/ReactCardFlip.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
-    "start": "webpack --progress --colors --watch --env dev",
+    "start": "webpack-dev-server --progress --colors --open",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
@@ -47,6 +47,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1",
     "yargs": "^10.0.3"
   },
   "jest": {

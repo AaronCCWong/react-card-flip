@@ -18,6 +18,9 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname, './example/src')
+  },
   resolve: {
     alias: {
       'react-card-flip': path.resolve(__dirname, './src/ReactCardFlip')
