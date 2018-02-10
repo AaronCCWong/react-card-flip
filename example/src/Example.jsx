@@ -23,7 +23,7 @@ class Example extends Component  {
         <div key="front" style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
-            src="//www.petfinder.com/wp-content/uploads/2012/11/dog-how-to-select-your-new-best-friend-thinkstock99062463.jpg"
+            src="//static.pexels.com/photos/59523/pexels-photo-59523.jpeg"
           />
 
           <button onClick={this.handleClick}>
