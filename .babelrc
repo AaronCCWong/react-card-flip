@@ -1,3 +1,4 @@
 {
-	"presets": ["env", "react", "stage-0"]
+	"presets": ["env", "react", "stage-0"],
+	"plugins": ["babel-plugin-add-module-exports"]
 }
