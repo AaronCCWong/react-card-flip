@@ -13,11 +13,12 @@ Live demo: [Demo](http://www.aaronccwong.com/react-card-flip/)
 To build the examples locally, run:
 
 ```
-npm install
-npm start
+yarn install
+yarn start
 ```
 
-Then open [`localhost:8000`](http://localhost:8000) in a browser.
+Then [`localhost:8080`](http://localhost:8080) should open in a browser. If not
+you can go to that directly.
 
 
 ## Installation
@@ -26,10 +27,10 @@ The easiest way to use react-card-flip is to install it from NPM with the
 command:
 
 ```
-npm install react-card-flip --save
+yarn add react-card-flip
 ```
 
-You can also use the standalone build by including `dist/react-card-flip.js` in
+You can also use the standalone build by including `lib/react-card-flip.js` in
 your page. If you use this, make sure you have already included React, and it is
 available as a global variable.
 

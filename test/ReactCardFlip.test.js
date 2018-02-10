@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ReactCardFlip from '../ReactCardFlip';
+
+import ReactCardFlip from '../src/ReactCardFlip.jsx';
 
 describe('Flipping', () => {
 	it('flips from front to back when props change', () => {
