@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/AaronCCWong/react-card-flip.svg?branch=master)](https://travis-ci.org/AaronCCWong/react-card-flip)
 [![Coverage Status](https://coveralls.io/repos/github/AaronCCWong/react-card-flip/badge.svg?branch=master)](https://coveralls.io/github/AaronCCWong/react-card-flip?branch=master)
 
 # ReactCardFlip
