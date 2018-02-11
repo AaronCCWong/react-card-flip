@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './example/src/example.js',
+  entry: './example/example.js',
   output: {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
@@ -19,7 +19,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, './example/src')
+    contentBase: path.join(__dirname, './example')
   },
   resolve: {
     alias: {
