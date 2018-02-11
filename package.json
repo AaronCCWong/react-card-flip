@@ -43,6 +43,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.13.1",
     "eslint-loader": "^1.9.0",
+    "file-loader": "^1.1.6",
     "jest": "^22.2.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

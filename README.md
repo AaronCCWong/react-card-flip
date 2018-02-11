@@ -9,7 +9,7 @@ CSS goes to [David Walsh](https://davidwalsh.name/css-flip).
 
 ## Demo & Examples
 
-Live demo: [Demo](http://www.aaronccwong.com/react-card-flip/)
+Live demo: [Demo](https://aaronccwong.github.io/react-card-flip/)
 
 To build the examples locally, run:
 
