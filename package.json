@@ -26,6 +26,9 @@
     "url": "https://github.com/AaronCCWong/react-card-flip/issues"
   },
   "homepage": "https://github.com/AaronCCWong/react-card-flip",
+  "files": [
+    "lib/**/*"
+  ],
   "dependencies": {
     "classnames": "^2.2.0",
     "prop-types": "^15.6.0"
