@@ -66,7 +66,7 @@ class App extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.setState({ isFlipped: !this.state.isFlipped });
+    this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
   render() {
