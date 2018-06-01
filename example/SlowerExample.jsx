@@ -16,7 +16,7 @@ class SlowerExample extends Component  {
 
   handleClick(event) {
 		event.preventDefault();
-		this.setState({ isFlipped: !this.state.isFlipped });
+		this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
 	}
 
   render() {
