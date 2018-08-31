@@ -49,7 +49,7 @@ class ReactCardFlip extends React.Component {
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
         left: '0',
-        position: 'absolute',
+        position: 'relative',
         top: '0',
         transform: 'rotateY(0deg)',
         transformStyle: 'preserve-3d',
