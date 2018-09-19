@@ -31,19 +31,7 @@ class ReactCardFlip extends React.Component {
       },
       flipper: {
         position: 'relative',
-        transform: `rotateY(${
-          this.props.infinite ? this.state.rotation : 0
-        }deg)`,
         transformStyle: 'preserve-3d',
-        transition: `${this.props.flipSpeedBackToFront}s`
-      },
-      flipperFlip: {
-        position: 'relative',
-        transform: `rotateY(${
-          this.props.infinite ? this.state.rotation : 180
-        }deg)`,
-        transformStyle: 'preserve-3d',
-        transition: `${this.props.flipSpeedFrontToBack}s`
       },
       front: {
         WebkitBackfaceVisibility: 'hidden',
@@ -51,22 +39,28 @@ class ReactCardFlip extends React.Component {
         left: '0',
         position: 'absolute',
         top: '0',
-        transform: 'rotateY(0deg)',
+				transform: `rotateY(${
+          this.props.infinite ? this.state.rotation : this.state.isFlipped ? 180 : 0
+        }deg)`,
         transformStyle: 'preserve-3d',
         width: '100%',
-        zIndex: '2',
-        ...this.props.cardStyles.front
+				zIndex: '2',
+				transition: `${this.props.flipSpeedBackToFront}s`,
+        ...this.props.cardStyles.front,
       },
       back: {
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
         left: '0',
         position: 'absolute',
-        transform: 'rotateY(180deg)',
+				transform: `rotateY(${
+          this.props.infinite ? this.state.rotation + 180 : this.state.isFlipped ? 0 : -180
+        }deg)`,
         transformStyle: 'preserve-3d',
         top: '0',
-        width: '100%',
-        ...this.props.cardStyles.back
+				width: '100%',
+				transition: `${this.props.flipSpeedFrontToBack}s`,
+        ...this.props.cardStyles.back,
       }
     };
 
@@ -74,7 +68,7 @@ class ReactCardFlip extends React.Component {
       <div className="react-card-flip" style={styles.container}>
         <div
           className="react-card-flipper"
-          style={this.state.isFlipped ? styles.flipperFlip : styles.flipper}
+          style={styles.flipper}
         >
           <div className="react-card-front" style={styles.front}>
             {this.getComponent('front')}
