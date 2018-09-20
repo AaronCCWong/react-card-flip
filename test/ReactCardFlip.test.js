@@ -15,12 +15,20 @@ describe('Flipping', () => {
 				</div>
 			</ReactCardFlip>
 		);
-		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
+		expect(wrapper.find('.react-card-front').props().style.transform).toBe(
 			'rotateY(0deg)'
 		);
+		expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+			'rotateY(-180deg)'
+		);
+
 		wrapper.setProps({ isFlipped: true });
-		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
+
+		expect(wrapper.find('.react-card-front').props().style.transform).toBe(
 			'rotateY(180deg)'
+		);
+		expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+			'rotateY(0deg)'
 		);
 	});
 
@@ -35,17 +43,28 @@ describe('Flipping', () => {
 				</div>
 			</ReactCardFlip>
 		);
-		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
+
+		expect(wrapper.find('.react-card-front').props().style.transform).toBe(
 			'rotateY(0deg)'
 		);
-		wrapper.setProps({ isFlipped: true });
-		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
+		expect(wrapper.find('.react-card-back').props().style.transform).toBe(
 			'rotateY(180deg)'
 		);
-		wrapper.setProps({ isFlipped: false });
-		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
-			'rotateY(360deg)'
-		);
+
+		let isFlipped = true;
+		
+		for(let i = 1; i <= 5; i++) {
+			wrapper.setProps({ isFlipped });
+			
+			expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+				`rotateY(${0 + (i * 180)}deg)`
+			);
+			expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+				`rotateY(${180 + (i * 180)}deg)`
+			);
+
+			isFlipped = !isFlipped;
+		}
 	});
 
 	it('does nothing when rerendering with no isFlipped prop change', () => {
@@ -59,13 +78,21 @@ describe('Flipping', () => {
 				</div>
 			</ReactCardFlip>
 		);
-		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
+
+		expect(wrapper.find('.react-card-front').props().style.transform).toBe(
 			'rotateY(180deg)'
+		);
+		expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+			'rotateY(0deg)'
 		);
 
 		wrapper.setProps({ isFlipped: true });
-		expect(wrapper.find('.react-card-flipper').props().style.transform).toBe(
+
+		expect(wrapper.find('.react-card-front').props().style.transform).toBe(
 			'rotateY(180deg)'
+		);
+		expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+			'rotateY(0deg)'
 		);
 	});
 });
