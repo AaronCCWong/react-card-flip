@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import ReactCardFlip from 'react-card-flip';
 
-import dog from './images/dog5-min.jpg';
-
 class SlowerExample extends Component  {
   constructor() {
     super();
@@ -26,7 +24,10 @@ class SlowerExample extends Component  {
         flipSpeedBackToFront={2}
         flipSpeedFrontToBack={2}>
         <div key="front" style={this.props.styles.card}>
-          <img style={this.props.styles.image} src={dog}/>
+          <img
+            style={this.props.styles.image}
+            src="//static.pexels.com/photos/59523/pexels-photo-59523.jpeg"
+          />
 
           <button onClick={this.handleClick}>
             Flip Card
