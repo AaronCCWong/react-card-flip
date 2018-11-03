@@ -647,11 +647,11 @@ var _SlowerExample = __webpack_require__(22);
 
 var _SlowerExample2 = _interopRequireDefault(_SlowerExample);
 
-var _FasterExample = __webpack_require__(24);
+var _FasterExample = __webpack_require__(23);
 
 var _FasterExample2 = _interopRequireDefault(_FasterExample);
 
-var _RevolvingExample = __webpack_require__(26);
+var _RevolvingExample = __webpack_require__(24);
 
 var _RevolvingExample2 = _interopRequireDefault(_RevolvingExample);
 
@@ -23606,10 +23606,6 @@ var _reactCardFlip = __webpack_require__(4);
 
 var _reactCardFlip2 = _interopRequireDefault(_reactCardFlip);
 
-var _dog5Min = __webpack_require__(23);
-
-var _dog5Min2 = _interopRequireDefault(_dog5Min);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23653,7 +23649,10 @@ var SlowerExample = function (_Component) {
         _react2.default.createElement(
           'div',
           { key: 'front', style: this.props.styles.card },
-          _react2.default.createElement('img', { style: this.props.styles.image, src: _dog5Min2.default }),
+          _react2.default.createElement('img', {
+            style: this.props.styles.image,
+            src: '//static.pexels.com/photos/59523/pexels-photo-59523.jpeg'
+          }),
           _react2.default.createElement(
             'button',
             { onClick: this.handleClick },
@@ -23693,12 +23692,6 @@ module.exports = exports['default'];
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "9a40ff5eb07d7f83667766352c4f5614.jpg";
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -23719,10 +23712,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _reactCardFlip = __webpack_require__(4);
 
 var _reactCardFlip2 = _interopRequireDefault(_reactCardFlip);
-
-var _dogCatBffMin = __webpack_require__(25);
-
-var _dogCatBffMin2 = _interopRequireDefault(_dogCatBffMin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23769,7 +23758,7 @@ var FasterExample = function (_Component) {
           { key: 'front', style: this.props.styles.card },
           _react2.default.createElement('img', {
             style: this.props.styles.image,
-            src: _dogCatBffMin2.default
+            src: '//www.planwallpaper.com/static/images/147083304-dogs-home-alone-all-day-632x475_TeDlBdS.jpg'
           }),
           _react2.default.createElement(
             'button',
@@ -23807,13 +23796,7 @@ exports.default = FasterExample;
 module.exports = exports['default'];
 
 /***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "5c74291309c2a6bc4bdd3f4369adc1cd.jpg";
-
-/***/ }),
-/* 26 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

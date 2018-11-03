@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import ReactCardFlip from 'react-card-flip';
 
-import dogCat from './images/dog-cat-bff-min.jpg';
-
 class FasterExample extends Component  {
   constructor() {
     super();
@@ -28,7 +26,7 @@ class FasterExample extends Component  {
         <div key="front" style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
-            src={dogCat}
+            src="//www.planwallpaper.com/static/images/147083304-dogs-home-alone-all-day-632x475_TeDlBdS.jpg"
           />
 
           <button onClick={this.handleClick}>
