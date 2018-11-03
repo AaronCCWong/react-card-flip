@@ -5,6 +5,7 @@
   "main": "./lib/react-card-flip.js",
   "scripts": {
     "build": "webpack --env dev --config webpack.dist.js && webpack --env build --config webpack.dist.js",
+    "build-example": "webpack --env dev && webpack --env build",
     "start": "webpack-dev-server --progress --colors --open",
     "test": "jest",
     "test:coverage": "jest --coverage",
