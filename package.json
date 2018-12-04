@@ -59,6 +59,8 @@
     "yargs": "^10.0.3"
   },
   "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/",
     "setupTestFrameworkScriptFile": "<rootDir>jestSetup.js",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
