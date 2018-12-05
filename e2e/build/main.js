@@ -196,9 +196,9 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(9);
+  module.exports = __webpack_require__(8);
 } else {
-  module.exports = __webpack_require__(10);
+  module.exports = __webpack_require__(9);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -304,199 +304,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(20)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(21)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(3);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ReactCardFlip = function (_React$Component) {
-  _inherits(ReactCardFlip, _React$Component);
-
-  function ReactCardFlip(props) {
-    _classCallCheck(this, ReactCardFlip);
-
-    var _this = _possibleConstructorReturn(this, (ReactCardFlip.__proto__ || Object.getPrototypeOf(ReactCardFlip)).call(this, props));
-
-    _this.state = {
-      isFlipped: _this.props.isFlipped,
-      rotation: 0
-    };
-    return _this;
-  }
-
-  _createClass(ReactCardFlip, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.isFlipped !== this.props.isFlipped) {
-        this.setState({ isFlipped: nextProps.isFlipped });
-        this.setState({ rotation: this.state.rotation + 180 });
-      }
-    }
-  }, {
-    key: 'getComponent',
-    value: function getComponent(key) {
-      return this.props.children.filter(function (component) {
-        return component.key === key;
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var styles = {
-        container: {
-          perspective: '1000px',
-          transformStyle: 'preserve-3d'
-        },
-        flipper: {
-          position: 'relative',
-          transformStyle: 'preserve-3d'
-        },
-        front: _extends({
-          WebkitBackfaceVisibility: 'hidden',
-          backfaceVisibility: 'hidden',
-          left: '0',
-          visibility: this.state.isFlipped ? 'hidden' : '',
-          position: this.state.isFlipped ? 'absolute' : 'relative',
-          top: '0',
-          transform: 'rotateY(' + (this.props.infinite ? this.state.rotation : this.state.isFlipped ? 180 : 0) + 'deg)',
-          transformStyle: 'preserve-3d',
-          width: '100%',
-          zIndex: '2',
-          transition: this.props.flipSpeedBackToFront + 's'
-        }, this.props.cardStyles.front),
-        back: _extends({
-          WebkitBackfaceVisibility: 'hidden',
-          backfaceVisibility: 'hidden',
-          left: '0',
-          visibility: this.state.isFlipped ? '' : 'hidden',
-          position: this.state.isFlipped ? 'relative' : 'absolute',
-          transform: 'rotateY(' + (this.props.infinite ? this.state.rotation + 180 : this.state.isFlipped ? 0 : -180) + 'deg)',
-          transformStyle: 'preserve-3d',
-          top: '0',
-          width: '100%',
-          transition: this.props.flipSpeedFrontToBack + 's'
-        }, this.props.cardStyles.back)
-      };
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'react-card-flip', style: styles.container },
-        _react2.default.createElement(
-          'div',
-          {
-            className: 'react-card-flipper',
-            style: styles.flipper
-          },
-          _react2.default.createElement(
-            'div',
-            { className: 'react-card-front', style: styles.front },
-            this.getComponent('front')
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'react-card-back', style: styles.back },
-            this.getComponent('back')
-          )
-        )
-      );
-    }
-  }]);
-
-  return ReactCardFlip;
-}(_react2.default.Component);
-
-ReactCardFlip.propTypes = {
-  cardStyles: _propTypes2.default.shape({
-    front: _propTypes2.default.object,
-    back: _propTypes2.default.object
-  }),
-  children: function children(props, propName, componentName) {
-    if (_react2.default.Children.count(props[propName]) !== 2) {
-      return new Error(componentName + ' requires two children.');
-    }
-    return null;
-  },
-  flipSpeedBackToFront: _propTypes2.default.number,
-  flipSpeedFrontToBack: _propTypes2.default.number,
-  infinite: _propTypes2.default.bool,
-  isFlipped: _propTypes2.default.bool
-};
-
-ReactCardFlip.defaultProps = {
-  cardStyles: {
-    front: {},
-    back: {}
-  },
-  flipSpeedBackToFront: 0.6,
-  flipSpeedFrontToBack: 0.6,
-  infinite: false,
-  isFlipped: false
-};
-
-exports.default = ReactCardFlip;
-module.exports = exports['default'];
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -510,7 +317,7 @@ module.exports = exports['default'];
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(6);
+  var ReactPropTypesSecret = __webpack_require__(4);
   var loggedTypeFailures = {};
 
   printWarning = function(text) {
@@ -593,7 +400,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -612,22 +419,57 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(13);
+  module.exports = __webpack_require__(12);
 } else {
-  module.exports = __webpack_require__(14);
+  module.exports = __webpack_require__(13);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 8 */
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(19)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(20)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -637,29 +479,18 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(11);
+var _reactDom = __webpack_require__(10);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Example = __webpack_require__(19);
+var _BootstrapCard = __webpack_require__(18);
 
-var _Example2 = _interopRequireDefault(_Example);
-
-var _SlowerExample = __webpack_require__(22);
-
-var _SlowerExample2 = _interopRequireDefault(_SlowerExample);
-
-var _FasterExample = __webpack_require__(23);
-
-var _FasterExample2 = _interopRequireDefault(_FasterExample);
-
-var _RevolvingExample = __webpack_require__(24);
-
-var _RevolvingExample2 = _interopRequireDefault(_RevolvingExample);
+var _BootstrapCard2 = _interopRequireDefault(_BootstrapCard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
+
 	var styles = {
 		card: {
 			border: '1px solid #eeeeee',
@@ -677,49 +508,102 @@ var App = function App() {
 		'div',
 		null,
 		_react2.default.createElement(
-			'p',
+			'h1',
+			{ id: 'main_header' },
+			'E2E Tests'
+		),
+		_react2.default.createElement(
+			'h2',
 			null,
-			'Click the button to flip the card!'
+			'Bootstrap Cards'
 		),
 		_react2.default.createElement(
-			'section',
-			{ className: 'example-section' },
+			'div',
+			{ className: 'container' },
 			_react2.default.createElement(
-				'h3',
-				null,
-				'Default card flip'
+				'div',
+				{ className: 'row' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-12' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'one_card_per_row_row_one_card_one' })
+				)
 			),
-			_react2.default.createElement(_Example2.default, { styles: styles })
-		),
-		_react2.default.createElement(
-			'section',
-			{ className: 'example-section' },
 			_react2.default.createElement(
-				'h3',
-				null,
-				'Slower card flip'
+				'div',
+				{ className: 'row' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-12' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'one_card_per_row_row_two_card_one' })
+				)
 			),
-			_react2.default.createElement(_SlowerExample2.default, { styles: styles })
-		),
-		_react2.default.createElement(
-			'section',
-			{ className: 'example-section' },
 			_react2.default.createElement(
-				'h3',
-				null,
-				'Faster card flip'
+				'div',
+				{ className: 'row' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-6' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_one_card_one' })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-6' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_one_card_two' })
+				)
 			),
-			_react2.default.createElement(_FasterExample2.default, { styles: styles })
-		),
-		_react2.default.createElement(
-			'section',
-			{ className: 'example-section' },
 			_react2.default.createElement(
-				'h3',
-				null,
-				'Revolving door card flip'
+				'div',
+				{ className: 'row' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-6' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_two_card_one' })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-6' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_two_card_two' })
+				)
 			),
-			_react2.default.createElement(_RevolvingExample2.default, { styles: styles })
+			_react2.default.createElement(
+				'div',
+				{ className: 'row' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-4' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_one_card_one' })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-4' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_one_card_two' })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-4' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_one_card_three' })
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'row' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-4' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_two_card_one' })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-4' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_two_card_two' })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-4' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_two_card_three' })
+				)
+			)
 		)
 	);
 };
@@ -727,7 +611,7 @@ var App = function App() {
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -758,7 +642,7 @@ __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentOwner:K,assign:k
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -780,7 +664,7 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(5);
+var checkPropTypes = __webpack_require__(3);
 
 // TODO: this is special because it gets imported during build.
 
@@ -2606,7 +2490,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2644,15 +2528,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(12);
+  module.exports = __webpack_require__(11);
 } else {
-  module.exports = __webpack_require__(15);
+  module.exports = __webpack_require__(14);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2668,7 +2552,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),n=__webpack_require__(2),ba=__webpack_require__(7);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+var aa=__webpack_require__(1),n=__webpack_require__(2),ba=__webpack_require__(5);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function t(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ca(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:t("227");function da(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}
 var ea=!1,fa=null,ha=!1,ia=null,ja={onError:function(a){ea=!0;fa=a}};function ka(a,b,c,d,e,f,g,h,k){ea=!1;fa=null;da.apply(ja,arguments)}function la(a,b,c,d,e,f,g,h,k){ka.apply(this,arguments);if(ea){if(ea){var l=fa;ea=!1;fa=null}else t("198"),l=void 0;ha||(ha=!0,ia=l)}}var ma=null,na={};
 function oa(){if(ma)for(var a in na){var b=na[a],c=ma.indexOf(a);-1<c?void 0:t("96",a);if(!pa[c]){b.extractEvents?void 0:t("97",a);pa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;qa.hasOwnProperty(h)?t("99",h):void 0;qa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ra(k[e],g,h);e=!0}else f.registrationName?(ra(f.registrationName,g,h),e=!0):e=!1;e?void 0:t("98",d,a)}}}}
@@ -2908,7 +2792,7 @@ var ei={default:bi},fi=ei&&bi||ei;module.exports=fi.default||fi;
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2936,7 +2820,7 @@ exports.unstable_shouldYield=function(){return!f&&(null!==d&&d.expirationTime<l|
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3583,7 +3467,7 @@ exports.unstable_shouldYield = unstable_shouldYield;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3606,9 +3490,9 @@ if (process.env.NODE_ENV !== "production") {
 
 var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(5);
-var scheduler = __webpack_require__(7);
-var tracing = __webpack_require__(16);
+var checkPropTypes = __webpack_require__(3);
+var scheduler = __webpack_require__(5);
+var tracing = __webpack_require__(15);
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -23318,22 +23202,22 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(17);
+  module.exports = __webpack_require__(16);
 } else {
-  module.exports = __webpack_require__(18);
+  module.exports = __webpack_require__(17);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23350,7 +23234,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interac
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23778,14 +23662,14 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -23794,11 +23678,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(3);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactCardFlip = __webpack_require__(4);
+var _reactCardFlip = __webpack_require__(21);
 
 var _reactCardFlip2 = _interopRequireDefault(_reactCardFlip);
 
@@ -23810,79 +23694,80 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Example = function (_Component) {
-  _inherits(Example, _Component);
+var BootstrapCard = function (_Component) {
+	_inherits(BootstrapCard, _Component);
 
-  function Example() {
-    _classCallCheck(this, Example);
+	function BootstrapCard() {
+		_classCallCheck(this, BootstrapCard);
 
-    var _this = _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).call(this));
+		var _this = _possibleConstructorReturn(this, (BootstrapCard.__proto__ || Object.getPrototypeOf(BootstrapCard)).call(this));
 
-    _this.state = {
-      isFlipped: false
-    };
-    _this.handleClick = _this.handleClick.bind(_this);
-    return _this;
-  }
+		_this.state = {
+			isFlipped: false
+		};
+		_this.handleClick = _this.handleClick.bind(_this);
+		return _this;
+	}
 
-  _createClass(Example, [{
-    key: 'handleClick',
-    value: function handleClick(event) {
-      event.preventDefault();
-      this.setState(function (prevState) {
-        return { isFlipped: !prevState.isFlipped };
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _reactCardFlip2.default,
-        { isFlipped: this.state.isFlipped },
-        _react2.default.createElement(
-          'div',
-          { key: 'front', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//static.pexels.com/photos/59523/pexels-photo-59523.jpeg'
-          }),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { key: 'back', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//img.buzzfeed.com/buzzfeed-static/static/2014-04/enhanced/webdr06/4/16/enhanced-11136-1396643149-13.jpg?no-auto'
-          }),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
-          )
-        )
-      );
-    }
-  }]);
+	_createClass(BootstrapCard, [{
+		key: 'handleClick',
+		value: function handleClick(event) {
+			event.preventDefault();
+			this.setState(function (prevState) {
+				return { isFlipped: !prevState.isFlipped };
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				_reactCardFlip2.default,
+				{ isFlipped: this.state.isFlipped },
+				_react2.default.createElement(
+					'div',
+					{ key: 'front', id: this.props.id, style: this.props.styles.card, className: 'card' },
+					_react2.default.createElement('img', {
+						style: this.props.styles.image,
+						src: 'http://static.pexels.com/photos/59523/pexels-photo-59523.jpeg'
+					}),
+					_react2.default.createElement(
+						'button',
+						{ onClick: this.handleClick },
+						'Flip Card'
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ key: 'back', style: this.props.styles.card, className: 'card' },
+					_react2.default.createElement('img', {
+						style: this.props.styles.image,
+						src: 'http://img.buzzfeed.com/buzzfeed-static/static/2014-04/enhanced/webdr06/4/16/enhanced-11136-1396643149-13.jpg?no-auto'
+					}),
+					_react2.default.createElement(
+						'button',
+						{ onClick: this.handleClick },
+						'Flip Card'
+					)
+				)
+			);
+		}
+	}]);
 
-  return Example;
+	return BootstrapCard;
 }(_react.Component);
 
 ;
 
-Example.propTypes = {
-  styles: _propTypes2.default.object
+BootstrapCard.propTypes = {
+	id: _propTypes2.default.string,
+	styles: _propTypes2.default.object
 };
 
-exports.default = Example;
+exports.default = BootstrapCard;
 module.exports = exports['default'];
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23897,8 +23782,8 @@ module.exports = exports['default'];
 
 var assign = __webpack_require__(2);
 
-var ReactPropTypesSecret = __webpack_require__(6);
-var checkPropTypes = __webpack_require__(5);
+var ReactPropTypesSecret = __webpack_require__(4);
+var checkPropTypes = __webpack_require__(3);
 
 var printWarning = function() {};
 
@@ -24445,7 +24330,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24458,7 +24343,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(6);
+var ReactPropTypesSecret = __webpack_require__(4);
 
 function emptyFunction() {}
 
@@ -24511,7 +24396,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24521,19 +24406,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(3);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactCardFlip = __webpack_require__(4);
-
-var _reactCardFlip2 = _interopRequireDefault(_reactCardFlip);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24543,290 +24426,132 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SlowerExample = function (_Component) {
-  _inherits(SlowerExample, _Component);
+var ReactCardFlip = function (_React$Component) {
+  _inherits(ReactCardFlip, _React$Component);
 
-  function SlowerExample() {
-    _classCallCheck(this, SlowerExample);
+  function ReactCardFlip(props) {
+    _classCallCheck(this, ReactCardFlip);
 
-    var _this = _possibleConstructorReturn(this, (SlowerExample.__proto__ || Object.getPrototypeOf(SlowerExample)).call(this));
+    var _this = _possibleConstructorReturn(this, (ReactCardFlip.__proto__ || Object.getPrototypeOf(ReactCardFlip)).call(this, props));
 
     _this.state = {
-      isFlipped: false
+      isFlipped: _this.props.isFlipped,
+      rotation: 0
     };
-    _this.handleClick = _this.handleClick.bind(_this);
     return _this;
   }
 
-  _createClass(SlowerExample, [{
-    key: 'handleClick',
-    value: function handleClick(event) {
-      event.preventDefault();
-      this.setState(function (prevState) {
-        return { isFlipped: !prevState.isFlipped };
+  _createClass(ReactCardFlip, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.isFlipped !== this.props.isFlipped) {
+        this.setState({ isFlipped: nextProps.isFlipped });
+        this.setState({ rotation: this.state.rotation + 180 });
+      }
+    }
+  }, {
+    key: 'getComponent',
+    value: function getComponent(key) {
+      return this.props.children.filter(function (component) {
+        return component.key === key;
       });
     }
   }, {
     key: 'render',
     value: function render() {
+      var styles = {
+        container: {
+          perspective: '1000px',
+          transformStyle: 'preserve-3d'
+        },
+        flipper: {
+          position: 'relative',
+          transformStyle: 'preserve-3d'
+        },
+        front: _extends({
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
+          left: '0',
+          visibility: this.state.isFlipped ? 'hidden' : '',
+          position: this.state.isFlipped ? 'absolute' : 'relative',
+          top: '0',
+          transform: 'rotateY(' + (this.props.infinite ? this.state.rotation : this.state.isFlipped ? 180 : 0) + 'deg)',
+          transformStyle: 'preserve-3d',
+          width: '100%',
+          zIndex: '2',
+          transition: this.props.flipSpeedBackToFront + 's'
+        }, this.props.cardStyles.front),
+        back: _extends({
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
+          left: '0',
+          visibility: this.state.isFlipped ? '' : 'hidden',
+          position: this.state.isFlipped ? 'relative' : 'absolute',
+          transform: 'rotateY(' + (this.props.infinite ? this.state.rotation + 180 : this.state.isFlipped ? 0 : -180) + 'deg)',
+          transformStyle: 'preserve-3d',
+          top: '0',
+          width: '100%',
+          transition: this.props.flipSpeedFrontToBack + 's'
+        }, this.props.cardStyles.back)
+      };
+
       return _react2.default.createElement(
-        _reactCardFlip2.default,
-        {
-          isFlipped: this.state.isFlipped,
-          flipSpeedBackToFront: 2,
-          flipSpeedFrontToBack: 2 },
+        'div',
+        { className: 'react-card-flip', style: styles.container },
         _react2.default.createElement(
           'div',
-          { key: 'front', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//static.pexels.com/photos/59523/pexels-photo-59523.jpeg'
-          }),
+          {
+            className: 'react-card-flipper',
+            style: styles.flipper
+          },
           _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { key: 'back', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//www.planwallpaper.com/static/images/Beagle-Wallpaper-dogs-7013951-1024-768.jpg'
-          }),
+            'div',
+            { className: 'react-card-front', style: styles.front },
+            this.getComponent('front')
+          ),
           _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
+            'div',
+            { className: 'react-card-back', style: styles.back },
+            this.getComponent('back')
           )
         )
       );
     }
   }]);
 
-  return SlowerExample;
-}(_react.Component);
+  return ReactCardFlip;
+}(_react2.default.Component);
 
-;
-
-SlowerExample.propTypes = {
-  styles: _propTypes2.default.object
+ReactCardFlip.propTypes = {
+  cardStyles: _propTypes2.default.shape({
+    front: _propTypes2.default.object,
+    back: _propTypes2.default.object
+  }),
+  children: function children(props, propName, componentName) {
+    if (_react2.default.Children.count(props[propName]) !== 2) {
+      return new Error(componentName + ' requires two children.');
+    }
+    return null;
+  },
+  flipSpeedBackToFront: _propTypes2.default.number,
+  flipSpeedFrontToBack: _propTypes2.default.number,
+  infinite: _propTypes2.default.bool,
+  isFlipped: _propTypes2.default.bool
 };
 
-exports.default = SlowerExample;
-module.exports = exports['default'];
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(3);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactCardFlip = __webpack_require__(4);
-
-var _reactCardFlip2 = _interopRequireDefault(_reactCardFlip);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FasterExample = function (_Component) {
-  _inherits(FasterExample, _Component);
-
-  function FasterExample() {
-    _classCallCheck(this, FasterExample);
-
-    var _this = _possibleConstructorReturn(this, (FasterExample.__proto__ || Object.getPrototypeOf(FasterExample)).call(this));
-
-    _this.state = {
-      isFlipped: false
-    };
-    _this.handleClick = _this.handleClick.bind(_this);
-    return _this;
-  }
-
-  _createClass(FasterExample, [{
-    key: 'handleClick',
-    value: function handleClick(event) {
-      event.preventDefault();
-      this.setState(function (prevState) {
-        return { isFlipped: !prevState.isFlipped };
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _reactCardFlip2.default,
-        {
-          isFlipped: this.state.isFlipped,
-          flipSpeedBackToFront: 0.1,
-          flipSpeedFrontToBack: 0.1 },
-        _react2.default.createElement(
-          'div',
-          { key: 'front', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//www.planwallpaper.com/static/images/147083304-dogs-home-alone-all-day-632x475_TeDlBdS.jpg'
-          }),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { key: 'back', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//www.planwallpaper.com/static/images/dogs1_lm4Ye34.jpg'
-          }),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
-          )
-        )
-      );
-    }
-  }]);
-
-  return FasterExample;
-}(_react.Component);
-
-;
-
-FasterExample.propTypes = {
-  styles: _propTypes2.default.object
+ReactCardFlip.defaultProps = {
+  cardStyles: {
+    front: {},
+    back: {}
+  },
+  flipSpeedBackToFront: 0.6,
+  flipSpeedFrontToBack: 0.6,
+  infinite: false,
+  isFlipped: false
 };
 
-exports.default = FasterExample;
-module.exports = exports['default'];
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(3);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactCardFlip = __webpack_require__(4);
-
-var _reactCardFlip2 = _interopRequireDefault(_reactCardFlip);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var RevolvingExample = function (_Component) {
-  _inherits(RevolvingExample, _Component);
-
-  function RevolvingExample() {
-    _classCallCheck(this, RevolvingExample);
-
-    var _this = _possibleConstructorReturn(this, (RevolvingExample.__proto__ || Object.getPrototypeOf(RevolvingExample)).call(this));
-
-    _this.state = {
-      isFlipped: false
-    };
-    _this.handleClick = _this.handleClick.bind(_this);
-    return _this;
-  }
-
-  _createClass(RevolvingExample, [{
-    key: 'handleClick',
-    value: function handleClick(event) {
-      event.preventDefault();
-      this.setState(function (prevState) {
-        return { isFlipped: !prevState.isFlipped };
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _reactCardFlip2.default,
-        { isFlipped: this.state.isFlipped, infinite: true },
-        _react2.default.createElement(
-          'div',
-          { key: 'front', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//www.planwallpaper.com/static/images/02_GpKGIi8.jpg'
-          }),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { key: 'back', style: this.props.styles.card },
-          _react2.default.createElement('img', {
-            style: this.props.styles.image,
-            src: '//www.planwallpaper.com/static/images/147083304-dogs-home-alone-all-day-632x475_TeDlBdS.jpg'
-          }),
-          _react2.default.createElement(
-            'button',
-            { onClick: this.handleClick },
-            'Flip Card'
-          )
-        )
-      );
-    }
-  }]);
-
-  return RevolvingExample;
-}(_react.Component);
-
-;
-
-RevolvingExample.propTypes = {
-  styles: _propTypes2.default.object
-};
-
-exports.default = RevolvingExample;
+exports.default = ReactCardFlip;
 module.exports = exports['default'];
 
 /***/ })
-],[8]);
+],[7]);
