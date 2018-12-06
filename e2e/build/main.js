@@ -521,13 +521,9 @@ var App = function App() {
 			'div',
 			{ className: 'container' },
 			_react2.default.createElement(
-				'div',
-				{ className: 'row' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'col-12' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'one_card_per_row_row_one_card_one' })
-				)
+				'h4',
+				null,
+				'Standard Bootstrap Rows'
 			),
 			_react2.default.createElement(
 				'div',
@@ -535,7 +531,16 @@ var App = function App() {
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-12' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'one_card_per_row_row_two_card_one' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_one_card_per_row_row_one_card_one' })
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'row' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-12' },
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_one_card_per_row_row_two_card_one' })
 				)
 			),
 			_react2.default.createElement(
@@ -544,12 +549,12 @@ var App = function App() {
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-6' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_one_card_one' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_two_cards_per_row_row_one_card_one' })
 				),
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-6' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_one_card_two' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_two_cards_per_row_row_one_card_two' })
 				)
 			),
 			_react2.default.createElement(
@@ -558,12 +563,12 @@ var App = function App() {
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-6' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_two_card_one' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_two_cards_per_row_row_two_card_one' })
 				),
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-6' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'two_cards_per_row_row_two_card_two' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_two_cards_per_row_row_two_card_two' })
 				)
 			),
 			_react2.default.createElement(
@@ -572,17 +577,17 @@ var App = function App() {
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-4' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_one_card_one' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_three_cards_per_row_row_one_card_one' })
 				),
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-4' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_one_card_two' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_three_cards_per_row_row_one_card_two' })
 				),
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-4' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_one_card_three' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_three_cards_per_row_row_one_card_three' })
 				)
 			),
 			_react2.default.createElement(
@@ -591,18 +596,59 @@ var App = function App() {
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-4' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_two_card_one' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_three_cards_per_row_row_two_card_one' })
 				),
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-4' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_two_card_two' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_three_cards_per_row_row_two_card_two' })
 				),
 				_react2.default.createElement(
 					'div',
 					{ className: 'col-4' },
-					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'three_cards_per_row_row_two_card_three' })
+					_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'standard_three_cards_per_row_row_two_card_three' })
 				)
+			),
+			_react2.default.createElement(
+				'h4',
+				null,
+				'Flex Bootstrap Rows'
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'd-flex flex-row' },
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_one_card_per_row_row_one_card_one' })
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'd-flex flex-row' },
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_one_card_per_row_row_two_card_one' })
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'd-flex flex-row' },
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_two_cards_per_row_row_one_card_one' }),
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_two_cards_per_row_row_one_card_two' })
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'd-flex flex-row' },
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_two_cards_per_row_row_two_card_one' }),
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_two_cards_per_row_row_two_card_two' })
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'd-flex flex-row' },
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_three_cards_per_row_row_one_card_one' }),
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_three_cards_per_row_row_one_card_two' }),
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_three_cards_per_row_row_one_card_three' })
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'd-flex flex-row' },
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_three_cards_per_row_row_two_card_one' }),
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_three_cards_per_row_row_two_card_two' }),
+				_react2.default.createElement(_BootstrapCard2.default, { styles: styles, id: 'flex_three_cards_per_row_row_two_card_three' })
 			)
 		)
 	);

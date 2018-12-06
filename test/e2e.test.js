@@ -54,75 +54,78 @@ describe('Puppeteer', () => {
 });
 
 describe('When using bootstrap', () => {
-	test('one card per row will not cause overlap', async () => {
+	const rowTypes = ['standard', 'flex'];
+	rowTypes.forEach((rowType) => {
+		test(`one card per ${rowType} row will not cause overlap`, async () => {
 
-		const browser = await getBrowser();
-		const page = await getPage(browser);
-		
-		await page.waitForSelector('#one_card_per_row_row_one_card_one');
-		await page.waitForSelector('#one_card_per_row_row_two_card_one');
-		
-		const rect_one = await getCoordinates('#one_card_per_row_row_one_card_one', page);
-		const rect_two = await getCoordinates('#one_card_per_row_row_two_card_one', page);
-		
-		expect(rect_two.top).toBeGreaterThan(rect_one.top);
+			const browser = await getBrowser();
+			const page = await getPage(browser);
 
-		browser.close();
+			await page.waitForSelector(`#${rowType}_one_card_per_row_row_one_card_one`);
+			await page.waitForSelector(`#${rowType}_one_card_per_row_row_two_card_one`);
 
-	}, timeout);
+			const rect_one = await getCoordinates(`#${rowType}_one_card_per_row_row_one_card_one`, page);
+			const rect_two = await getCoordinates(`#${rowType}_one_card_per_row_row_two_card_one`, page);
 
-	test('two cards per row will not cause overlap', async () => {
+			expect(rect_two.top).toBeGreaterThan(rect_one.top);
 
-		const browser = await getBrowser();
-		const page = await getPage(browser);
+			browser.close();
 
-		await page.waitForSelector('#two_cards_per_row_row_one_card_one');
-		await page.waitForSelector('#two_cards_per_row_row_one_card_two');
-		await page.waitForSelector('#two_cards_per_row_row_two_card_one');
-		await page.waitForSelector('#one_card_per_row_row_one_card_one');
+		}, timeout);
 
-		const rect_one = await getCoordinates('#two_cards_per_row_row_one_card_one', page);
-		const rect_two = await getCoordinates('#two_cards_per_row_row_one_card_two', page);
-		const rect_three = await getCoordinates('#two_cards_per_row_row_two_card_one', page);
-		const rect_four = await getCoordinates('#one_card_per_row_row_one_card_one', page);
+		test(`two cards per ${rowType} row will not cause overlap`, async () => {
 
-		expect(rect_two.top).toBe(rect_one.top);
-		expect(rect_two.left).toBeGreaterThan(rect_one.left);
+			const browser = await getBrowser();
+			const page = await getPage(browser);
 
-		expect(rect_three.top).toBeGreaterThan(rect_one.top);
+			await page.waitForSelector(`#${rowType}_two_cards_per_row_row_one_card_one`);
+			await page.waitForSelector(`#${rowType}_two_cards_per_row_row_one_card_two`);
+			await page.waitForSelector(`#${rowType}_two_cards_per_row_row_two_card_one`);
+			await page.waitForSelector(`#${rowType}_one_card_per_row_row_one_card_one`);
 
-		expect(rect_one.top).toBeGreaterThan(rect_four.top + 100);
-		
-		browser.close();
+			const rect_one = await getCoordinates(`#${rowType}_two_cards_per_row_row_one_card_one`, page);
+			const rect_two = await getCoordinates(`#${rowType}_two_cards_per_row_row_one_card_two`, page);
+			const rect_three = await getCoordinates(`#${rowType}_two_cards_per_row_row_two_card_one`, page);
+			const rect_four = await getCoordinates(`#${rowType}_one_card_per_row_row_one_card_one`, page);
 
-	}, timeout);
+			expect(rect_two.top).toBe(rect_one.top);
+			expect(rect_two.left).toBeGreaterThan(rect_one.left);
 
-	test('three cards per row will not cause overlap', async () => {
+			expect(rect_three.top).toBeGreaterThan(rect_one.top);
 
-		const browser = await getBrowser();
-		const page = await getPage(browser);
+			expect(rect_one.top).toBeGreaterThan(rect_four.top + 100);
 
-		await page.waitForSelector('#three_cards_per_row_row_one_card_one');
-		await page.waitForSelector('#three_cards_per_row_row_one_card_two');
-		await page.waitForSelector('#three_cards_per_row_row_one_card_three');
-		await page.waitForSelector('#three_cards_per_row_row_two_card_one');
-		await page.waitForSelector('#two_cards_per_row_row_one_card_one');
+			browser.close();
 
-		const rect_one = await getCoordinates('#three_cards_per_row_row_one_card_one', page);
-		const rect_two = await getCoordinates('#three_cards_per_row_row_one_card_two', page);
-		const rect_three = await getCoordinates('#three_cards_per_row_row_one_card_three', page);
-		const rect_four = await getCoordinates('#three_cards_per_row_row_two_card_one', page);
-		const rect_five = await getCoordinates('#two_cards_per_row_row_one_card_one', page);
+		}, timeout);
 
-		expect(rect_two.top).toBe(rect_one.top);
-		expect(rect_two.left).toBeGreaterThan(rect_one.left);
-		expect(rect_three.left).toBeGreaterThan(rect_two.left);
+		test(`three cards per ${rowType} row will not cause overlap`, async () => {
 
-		expect(rect_four.top).toBeGreaterThan(rect_one.top);
+			const browser = await getBrowser();
+			const page = await getPage(browser);
 
-		expect(rect_one.top).toBeGreaterThan(rect_five.top + 100);
+			await page.waitForSelector(`#${rowType}_three_cards_per_row_row_one_card_one`);
+			await page.waitForSelector(`#${rowType}_three_cards_per_row_row_one_card_two`);
+			await page.waitForSelector(`#${rowType}_three_cards_per_row_row_one_card_three`);
+			await page.waitForSelector(`#${rowType}_three_cards_per_row_row_two_card_one`);
+			await page.waitForSelector(`#${rowType}_two_cards_per_row_row_one_card_one`);
 
-		browser.close();
+			const rect_one = await getCoordinates(`#${rowType}_three_cards_per_row_row_one_card_one`, page);
+			const rect_two = await getCoordinates(`#${rowType}_three_cards_per_row_row_one_card_two`, page);
+			const rect_three = await getCoordinates(`#${rowType}_three_cards_per_row_row_one_card_three`, page);
+			const rect_four = await getCoordinates(`#${rowType}_three_cards_per_row_row_two_card_one`, page);
+			const rect_five = await getCoordinates(`#${rowType}_two_cards_per_row_row_one_card_one`, page);
 
-	}, timeout);
+			expect(rect_two.top).toBe(rect_one.top);
+			expect(rect_two.left).toBeGreaterThan(rect_one.left);
+			expect(rect_three.left).toBeGreaterThan(rect_two.left);
+
+			expect(rect_four.top).toBeGreaterThan(rect_one.top);
+
+			expect(rect_one.top).toBeGreaterThan(rect_five.top + 100);
+
+			browser.close();
+
+		}, timeout);
+	});
 });
