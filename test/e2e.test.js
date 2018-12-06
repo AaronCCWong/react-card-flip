@@ -79,15 +79,19 @@ describe('When using bootstrap', () => {
 		await page.waitForSelector('#two_cards_per_row_row_one_card_one');
 		await page.waitForSelector('#two_cards_per_row_row_one_card_two');
 		await page.waitForSelector('#two_cards_per_row_row_two_card_one');
+		await page.waitForSelector('#one_card_per_row_row_one_card_one');
 
 		const rect_one = await getCoordinates('#two_cards_per_row_row_one_card_one', page);
 		const rect_two = await getCoordinates('#two_cards_per_row_row_one_card_two', page);
 		const rect_three = await getCoordinates('#two_cards_per_row_row_two_card_one', page);
+		const rect_four = await getCoordinates('#one_card_per_row_row_one_card_one', page);
 
 		expect(rect_two.top).toBe(rect_one.top);
 		expect(rect_two.left).toBeGreaterThan(rect_one.left);
 
 		expect(rect_three.top).toBeGreaterThan(rect_one.top);
+
+		expect(rect_one.top).toBeGreaterThan(rect_four.top + 100);
 		
 		browser.close();
 
@@ -102,17 +106,21 @@ describe('When using bootstrap', () => {
 		await page.waitForSelector('#three_cards_per_row_row_one_card_two');
 		await page.waitForSelector('#three_cards_per_row_row_one_card_three');
 		await page.waitForSelector('#three_cards_per_row_row_two_card_one');
+		await page.waitForSelector('#two_cards_per_row_row_one_card_one');
 
 		const rect_one = await getCoordinates('#three_cards_per_row_row_one_card_one', page);
 		const rect_two = await getCoordinates('#three_cards_per_row_row_one_card_two', page);
 		const rect_three = await getCoordinates('#three_cards_per_row_row_one_card_three', page);
 		const rect_four = await getCoordinates('#three_cards_per_row_row_two_card_one', page);
+		const rect_five = await getCoordinates('#two_cards_per_row_row_one_card_one', page);
 
 		expect(rect_two.top).toBe(rect_one.top);
 		expect(rect_two.left).toBeGreaterThan(rect_one.left);
 		expect(rect_three.left).toBeGreaterThan(rect_two.left);
 
-		expect(rect_four.top).toBeGreaterThan(rect_one.top);	
+		expect(rect_four.top).toBeGreaterThan(rect_one.top);
+
+		expect(rect_one.top).toBeGreaterThan(rect_five.top + 100);
 
 		browser.close();
 
