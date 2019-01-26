@@ -37,29 +37,31 @@ class ReactCardFlip extends React.Component {
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
         left: '0',
-        position: 'absolute',
+        visibility: this.state.isFlipped ? 'hidden' : '',
+        position: this.state.isFlipped ? 'absolute' : 'relative',
         top: '0',
-				transform: `rotateY(${
+        transform: `rotateY(${
           this.props.infinite ? this.state.rotation : this.state.isFlipped ? 180 : 0
         }deg)`,
         transformStyle: 'preserve-3d',
         width: '100%',
-				zIndex: '2',
-				transition: `${this.props.flipSpeedBackToFront}s`,
+        zIndex: '2',
+        transition: `${this.props.flipSpeedBackToFront}s`,
         ...this.props.cardStyles.front,
       },
       back: {
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
         left: '0',
-        position: 'absolute',
-				transform: `rotateY(${
+        visibility: this.state.isFlipped ? '' : 'hidden',
+        position: this.state.isFlipped ? 'relative' : 'absolute',
+        transform: `rotateY(${
           this.props.infinite ? this.state.rotation + 180 : this.state.isFlipped ? 0 : -180
         }deg)`,
         transformStyle: 'preserve-3d',
         top: '0',
-				width: '100%',
-				transition: `${this.props.flipSpeedFrontToBack}s`,
+        width: '100%',
+        transition: `${this.props.flipSpeedFrontToBack}s`,
         ...this.props.cardStyles.back,
       }
     };
