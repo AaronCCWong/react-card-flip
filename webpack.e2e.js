@@ -5,9 +5,7 @@ module.exports = {
 	entry: './e2e/e2e.js',
 	output: {
 		filename: '[name].js',
-		chunkFilename: '[id].chunk.js',
 		path: path.resolve(__dirname, './e2e/build'),
-		publicPath: '/e2e/'
 	},
 	module: {
 		rules: [
@@ -35,8 +33,12 @@ module.exports = {
 		},
 		extensions: ['.js', '.jsx']
 	},
+	optimization: {
+		splitChunks: {
+			chunks: 'all'
+		}
+	},
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin('shared'),
 		new webpack.LoaderOptionsPlugin({ debug: true })
 	]
 };

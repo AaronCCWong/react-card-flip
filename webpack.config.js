@@ -2,12 +2,12 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './example/example.js',
+  devtool: 'eval-source-map',
   output: {
     filename: '[name].js',
-    chunkFilename: '[id].chunk.js',
-    path: path.resolve(__dirname, './example/build'),
-    publicPath: '/build/'
+    path: path.resolve(__dirname, './example/build')
   },
   module: {
     rules: [
@@ -35,8 +35,12 @@ module.exports = {
     },
     extensions: ['.js', '.jsx']
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('shared'),
     new webpack.LoaderOptionsPlugin({ debug: true })
   ]
 };

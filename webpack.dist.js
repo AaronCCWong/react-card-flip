@@ -1,7 +1,6 @@
 /* global __dirname, require, module*/
 
 const webpack = require('webpack');
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
 const pkg = require('./package.json');
@@ -11,13 +10,13 @@ let libraryName = pkg.name;
 let plugins = [], outputFile;
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
   outputFile = libraryName + '.min.js';
 } else {
   outputFile = libraryName + '.js';
 }
 
 const config = {
+  mode: 'production',
   entry: __dirname + '/src/ReactCardFlip.jsx',
   devtool: 'source-map',
   output: {
@@ -26,6 +25,9 @@ const config = {
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true
+  },
+  optimization: {
+    minimize: true
   },
   module: {
     rules: [

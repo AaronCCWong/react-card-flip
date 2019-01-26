@@ -8,10 +8,10 @@
     "build-example": "webpack --env dev && webpack --env build",
     "build-e2e": "webpack --env dev --config webpack.e2e.js && webpack --env build --config webpack.e2e.js",
     "start": "webpack-dev-server --progress --colors --open",
-    "test": "npm run build-e2e && jest",
+    "test": "yarn build-e2e && jest",
     "test:coverage": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test:watch": "npm run build-e2e && jest --watch"
+    "test:watch": "yarn build-e2e && jest --watch"
   },
   "repository": {
     "type": "git",
@@ -49,15 +49,16 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.13.1",
-    "eslint-loader": "^1.9.0",
+    "eslint-loader": "^2.1.1",
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^1.1.6",
     "jest": "^22.2.2",
     "puppeteer": "^1.11.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14",
     "yargs": "^10.0.3"
   },
   "jest": {
