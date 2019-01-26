@@ -30,4 +30,3 @@ node_modules
 
 package-lock.json
 e2e/build
-example/build
