@@ -1,6 +1,6 @@
 {
   "name": "react-card-flip",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "ReactCardFlip",
   "main": "./lib/react-card-flip.js",
   "scripts": {
