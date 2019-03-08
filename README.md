@@ -6,7 +6,6 @@
 React Card Flip is allows you to use the card flipping animation. Credit for the
 CSS goes to [David Walsh](https://davidwalsh.name/css-flip).
 
-
 ## Demo & Examples
 
 Live demo: [Demo](https://aaronccwong.github.io/react-card-flip/)
@@ -21,7 +20,6 @@ yarn start
 Then [`localhost:8080`](http://localhost:8080) should open in a browser. If not
 you can go to that directly.
 
-
 ## Installation
 
 The easiest way to use react-card-flip is to install it from NPM with the
@@ -34,7 +32,6 @@ yarn add react-card-flip
 You can also use the standalone build by including `lib/react-card-flip.js` in
 your page. If you use this, make sure you have already included React, and it is
 available as a global variable.
-
 
 ## Usage
 
@@ -71,7 +68,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <ReactCardFlip isFlipped={this.state.isFlipped}>
+      <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
         <YOUR_FRONT_CCOMPONENT key="front">
           This is the front of the card.
           <button onClick={this.handleClick}>Click to flip</button>
@@ -99,12 +96,13 @@ component as the back of the card.
 
 ### Properties
 
-| Props                | Type    | Description                                                                                                                 | Default   |
-|----------------------|---------|-----------------------------------------------------------------------------------------------------------------------------|-----------|
-| isFlipped            | bool    | False to show the front of the card, true to show the back                                                                  | undefined |
-| flipSpeedBackToFront | number  | The speed of the flip animation when the card flips from back to front, the higher the number the slower the flip animation | 0.6       |
-| flipSpeedFrontToBack | number  | The speed of the flip animation when the card flips from front to back, the higher the number the slower the flip animation | 0.6       |
-| infinite             | bool    | False to rotate in opposite directions on both sides of the card, true to rotate in the same direction                      | false     |
+| Props                | Type   | Description                                                                                                                 | Default    |
+| -------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| isFlipped            | bool   | False to show the front of the card, true to show the back                                                                  | undefined  |
+| flipSpeedBackToFront | number | The speed of the flip animation when the card flips from back to front, the higher the number the slower the flip animation | 0.6        |
+| flipSpeedFrontToBack | number | The speed of the flip animation when the card flips from front to back, the higher the number the slower the flip animation | 0.6        |
+| infinite             | bool   | False to rotate in opposite directions on both sides of the card, true to rotate in the same direction                      | false      |
+| flipDirection        | string | Direction of the card flip (options are: 'horizontal' or 'vertical' )                                                       | horizontal |
 
 ## Development (`src`, `lib` and the build process)
 
@@ -116,9 +114,9 @@ To build, watch and serve the examples (which will also watch the component sour
 
 To run tests for this project run one of the following commands:
 
-* `yarn test` - Runs tests then exits
-* `yarn test:watch` - Runs tests in watch mode
-* `yarn test:coverage` - Runs tests and creates a coverage report
+- `yarn test` - Runs tests then exits
+- `yarn test:watch` - Runs tests in watch mode
+- `yarn test:coverage` - Runs tests and creates a coverage report
 
 ## Contributing
 
