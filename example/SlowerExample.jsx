@@ -37,7 +37,7 @@ class SlowerExample extends Component  {
         <div key="back" style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
-            src="//www.planwallpaper.com/static/images/Beagle-Wallpaper-dogs-7013951-1024-768.jpg"
+            src="//img.buzzfeed.com/buzzfeed-static/static/2014-04/enhanced/webdr06/4/16/enhanced-11136-1396643149-13.jpg?no-auto"
           />
 
           <button onClick={this.handleClick}>

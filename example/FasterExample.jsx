@@ -26,7 +26,7 @@ class FasterExample extends Component  {
         <div key="front" style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
-            src="//www.planwallpaper.com/static/images/147083304-dogs-home-alone-all-day-632x475_TeDlBdS.jpg"
+            src="//static.pexels.com/photos/59523/pexels-photo-59523.jpeg"
           />
 
           <button onClick={this.handleClick}>
@@ -37,7 +37,7 @@ class FasterExample extends Component  {
         <div key="back" style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
-            src="//www.planwallpaper.com/static/images/dogs1_lm4Ye34.jpg"
+            src="//img.buzzfeed.com/buzzfeed-static/static/2014-04/enhanced/webdr06/4/16/enhanced-11136-1396643149-13.jpg?no-auto"
           />
 
           <button onClick={this.handleClick}>
