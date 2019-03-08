@@ -5,6 +5,7 @@ import Example from './Example.jsx';
 import SlowerExample from './SlowerExample.jsx';
 import FasterExample from './FasterExample.jsx';
 import RevolvingExample from './RevolvingExample.jsx';
+import VerticalExample from './VerticalExample.jsx';
 
 const App = () => {
 	const styles = {
@@ -56,6 +57,14 @@ const App = () => {
 				</h3>
 
 				<RevolvingExample styles={styles} />
+			</section>
+
+			<section className="example-section">
+				<h3>
+					Vertical flip
+				</h3>
+
+				<VerticalExample styles={styles} />
 			</section>
 		</div>
 	);
