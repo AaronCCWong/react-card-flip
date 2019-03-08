@@ -110,10 +110,6 @@ ReactCardFlip.propTypes = {
       return new Error(`${componentName} requires two children.`);
     }
   },
-  flipSpeedBackToFront: PropTypes.number,
-  flipSpeedFrontToBack: PropTypes.number,
-  infinite: PropTypes.bool,
-  isFlipped: PropTypes.bool,
   flipDirection: (props, propName, componentName) => {
     if (!props[propName]) {
       return;
@@ -127,6 +123,10 @@ ReactCardFlip.propTypes = {
       return new Error(`${propName} expects (horizontal|vertical), got ${props[propName].toLowerCase()}`);
     }
   },
+  flipSpeedBackToFront: PropTypes.number,
+  flipSpeedFrontToBack: PropTypes.number,
+  infinite: PropTypes.bool,
+  isFlipped: PropTypes.bool,
 };
 
 ReactCardFlip.defaultProps = {
