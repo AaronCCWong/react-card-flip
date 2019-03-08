@@ -109,13 +109,24 @@ ReactCardFlip.propTypes = {
     if (React.Children.count(props[propName]) !== 2) {
       return new Error(`${componentName} requires two children.`);
     }
-    return null;
   },
   flipSpeedBackToFront: PropTypes.number,
   flipSpeedFrontToBack: PropTypes.number,
   infinite: PropTypes.bool,
   isFlipped: PropTypes.bool,
-  flipDirection: PropTypes.string
+  flipDirection: (props, propName, componentName) => {
+    if (!props[propName]) {
+      return;
+    }
+
+    if (!(typeof props[propName] === 'string' || props[propName] instanceof String)) {
+      return new Error(`${propName} requires a string.`);
+    }
+
+    if (props[propName].toLowerCase() !== 'horizontal' && props[propName].toLowerCase() !== 'vertical') {
+      return new Error(`${propName} expects (horizontal|vertical), got ${props[propName].toLowerCase()}`);
+    }
+  },
 };
 
 ReactCardFlip.defaultProps = {
