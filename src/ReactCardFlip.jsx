@@ -29,7 +29,8 @@ class ReactCardFlip extends React.Component {
       infinite,
       flipSpeedFrontToBack,
       flipSpeedBackToFront,
-      cardStyles: { front, back }
+      cardStyles: { front, back },
+      containerStyle
     } = this.props;
     const { isFlipped, rotation } = this.state;
 
@@ -85,7 +86,7 @@ class ReactCardFlip extends React.Component {
     };
 
     return (
-      <div className="react-card-flip" style={styles.container}>
+      <div className="react-card-flip" style={{...styles.container, ...containerStyle}}>
         <div className="react-card-flipper" style={styles.flipper}>
           <div className="react-card-front" style={styles.front}>
             {this.getComponent('front')}
@@ -130,6 +131,7 @@ ReactCardFlip.propTypes = {
 };
 
 ReactCardFlip.defaultProps = {
+  containerStyle: {},
   cardStyles: {
     front: {},
     back: {}
