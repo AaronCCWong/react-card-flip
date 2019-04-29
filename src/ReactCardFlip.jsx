@@ -118,6 +118,7 @@ ReactCardFlip.propTypes = {
       return new Error(`${componentName} requires two children.`);
     }
   },
+  containerStyle: PropTypes.object,
   flipDirection: (props, propName, componentName) => {
     if (!props[propName]) {
       return;
