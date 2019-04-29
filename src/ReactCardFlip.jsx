@@ -30,7 +30,8 @@ class ReactCardFlip extends React.Component {
       flipSpeedFrontToBack,
       flipSpeedBackToFront,
       cardStyles: { front, back },
-      containerStyle
+      containerStyle,
+      cardZIndex
     } = this.props;
     const { isFlipped, rotation } = this.state;
 
@@ -50,7 +51,8 @@ class ReactCardFlip extends React.Component {
     const styles = {
       container: {
         perspective: '1000px',
-        transformStyle: 'preserve-3d'
+        transformStyle: 'preserve-3d',
+        zIndex: `${cardZIndex}`
       },
       flipper: {
         position: 'relative',
@@ -110,6 +112,7 @@ ReactCardFlip.propTypes = {
     front: PropTypes.object,
     back: PropTypes.object
   }),
+  cardZIndex: PropTypes.string,
   children: (props, propName, componentName) => {
     if (React.Children.count(props[propName]) !== 2) {
       return new Error(`${componentName} requires two children.`);
@@ -120,18 +123,29 @@ ReactCardFlip.propTypes = {
       return;
     }
 
-    if (!(typeof props[propName] === 'string' || props[propName] instanceof String)) {
+    if (
+      !(
+        typeof props[propName] === 'string' || props[propName] instanceof String
+      )
+    ) {
       return new Error(`${propName} requires a string.`);
     }
 
-    if (props[propName].toLowerCase() !== 'horizontal' && props[propName].toLowerCase() !== 'vertical') {
-      return new Error(`${propName} expects (horizontal|vertical), got ${props[propName].toLowerCase()}`);
+    if (
+      props[propName].toLowerCase() !== 'horizontal' &&
+      props[propName].toLowerCase() !== 'vertical'
+    ) {
+      return new Error(
+        `${propName} expects (horizontal|vertical), got ${props[
+          propName
+        ].toLowerCase()}`
+      );
     }
   },
   flipSpeedBackToFront: PropTypes.number,
   flipSpeedFrontToBack: PropTypes.number,
   infinite: PropTypes.bool,
-  isFlipped: PropTypes.bool,
+  isFlipped: PropTypes.bool
 };
 
 ReactCardFlip.defaultProps = {
@@ -140,11 +154,12 @@ ReactCardFlip.defaultProps = {
     front: {},
     back: {}
   },
+  cardZIndex: 'auto',
+  flipDirection: 'horizontal',
   flipSpeedBackToFront: 0.6,
   flipSpeedFrontToBack: 0.6,
   infinite: false,
-  isFlipped: false,
-  flipDirection: 'horizontal'
+  isFlipped: false
 };
 
 export default ReactCardFlip;
