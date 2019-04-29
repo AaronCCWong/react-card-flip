@@ -30,6 +30,7 @@ class ReactCardFlip extends React.Component {
       flipSpeedFrontToBack,
       flipSpeedBackToFront,
       cardStyles: { front, back },
+      containerStyle,
       cardZIndex
     } = this.props;
     const { isFlipped, rotation } = this.state;
@@ -55,7 +56,9 @@ class ReactCardFlip extends React.Component {
       },
       flipper: {
         position: 'relative',
-        transformStyle: 'preserve-3d'
+        transformStyle: 'preserve-3d',
+        width: '100%',
+        height: '100%',
       },
       front: {
         WebkitBackfaceVisibility: 'hidden',
@@ -67,6 +70,7 @@ class ReactCardFlip extends React.Component {
         transform: flipDirection === 'horizontal' ? frontRotateY : frontRotateX,
         transformStyle: 'preserve-3d',
         width: '100%',
+        height: '100%',
         zIndex: '2',
         transition: `${flipSpeedBackToFront}s`,
         ...front
@@ -81,13 +85,14 @@ class ReactCardFlip extends React.Component {
         transformStyle: 'preserve-3d',
         top: '0',
         width: '100%',
+        height: '100%',
         transition: `${flipSpeedFrontToBack}s`,
         ...back
       }
     };
 
     return (
-      <div className="react-card-flip" style={styles.container}>
+      <div className="react-card-flip" style={{...styles.container, ...containerStyle}}>
         <div className="react-card-flipper" style={styles.flipper}>
           <div className="react-card-front" style={styles.front}>
             {this.getComponent('front')}
@@ -144,6 +149,7 @@ ReactCardFlip.propTypes = {
 };
 
 ReactCardFlip.defaultProps = {
+  containerStyle: {},
   cardStyles: {
     front: {},
     back: {}
