@@ -51,12 +51,10 @@ class ReactCardFlip extends React.Component {
     const styles = {
       container: {
         perspective: '1000px',
-        transformStyle: 'preserve-3d',
         zIndex: `${cardZIndex}`
       },
       flipper: {
         position: 'relative',
-        transformStyle: 'preserve-3d',
         width: '100%',
         height: '100%',
       },
@@ -64,7 +62,6 @@ class ReactCardFlip extends React.Component {
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
         left: '0',
-        visibility: isFlipped ? 'hidden' : '',
         position: isFlipped ? 'absolute' : 'relative',
         top: '0',
         transform: flipDirection === 'horizontal' ? frontRotateY : frontRotateX,
@@ -79,7 +76,6 @@ class ReactCardFlip extends React.Component {
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
         left: '0',
-        visibility: isFlipped ? '' : 'hidden',
         position: isFlipped ? 'relative' : 'absolute',
         transform: flipDirection === 'horizontal' ? backRotateY : backRotateX,
         transformStyle: 'preserve-3d',
