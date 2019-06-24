@@ -28,5 +28,5 @@ node_modules
 .idea/
 *.DS_Store
 
-package-lock.json
+yarn-lock.json
 e2e/build

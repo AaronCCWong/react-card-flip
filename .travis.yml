@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "7"
 cache:
-  yarn: true
+  npm: true
 env:
   - CXX=g++-4.8
 addons:
@@ -11,10 +11,14 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+before_install:
+  - npm install --save react
+  - npm install --save react-dom
+  - npm install --save prop-types
 install:
-  - yarn install
+  - npm install
 script:
-  - yarn test
-  - yarn test:coverage
+  - npm run test
+  - npm run test:coverage
 after_success:
-  - yarn coveralls
+  - npm run coveralls
