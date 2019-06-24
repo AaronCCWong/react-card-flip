@@ -1,6 +1,6 @@
 {
   "name": "react-card-flip",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "ReactCardFlip",
   "main": "./lib/react-card-flip.js",
   "scripts": {
@@ -31,9 +31,10 @@
   "files": [
     "lib/**/*"
   ],
-  "dependencies": {
-    "classnames": "^2.2.0",
-    "prop-types": "^15.6.0"
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -54,8 +55,6 @@
     "file-loader": "^1.1.6",
     "jest": "^22.2.2",
     "puppeteer": "^1.11.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
