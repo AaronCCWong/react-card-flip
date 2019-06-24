@@ -4,7 +4,7 @@ const timeout = 30000;
 
 function getBrowser() {
 	return puppeteer.launch({
-		headless: true 
+		headless: true
 	});
 }
 
@@ -25,31 +25,29 @@ async function getPage(browser) {
 		for (let i = 0; i < msg.args.length; ++i)
 			console.log(`${i}: ${msg.args[i]}`);
 	});
-	
+
 	return page;
 }
 
-async function getCoordinates (id, page) {
+async function getCoordinates(id, page) {
 	const ele = await page.$(id);
 	return page.evaluate((ele) => {
-		const {top, left, bottom, right} = ele.getBoundingClientRect();
-		return {top, left, bottom, right};
+		const { top, left, bottom, right } = ele.getBoundingClientRect();
+		return { top, left, bottom, right };
 	}, ele);
 }
 
 describe('Puppeteer', () => {
 	test('can find main header', async () => {
-
 		const browser = await getBrowser();
 		const page = await getPage(browser);
-		
+
 		await page.waitForSelector('#main_header');
 
 		const html = await page.$eval('#main_header', e => e.innerHTML);
 		expect(html).toBe('E2E Tests');
 
 		browser.close();
-
 	}, timeout);
 });
 
@@ -57,7 +55,6 @@ describe('When using bootstrap', () => {
 	const rowTypes = ['standard', 'flex'];
 	rowTypes.forEach((rowType) => {
 		test(`one card per ${rowType} row will not cause overlap`, async () => {
-
 			const browser = await getBrowser();
 			const page = await getPage(browser);
 
@@ -70,11 +67,9 @@ describe('When using bootstrap', () => {
 			expect(rect_two.top).toBeGreaterThan(rect_one.top);
 
 			browser.close();
-
 		}, timeout);
 
 		test(`two cards per ${rowType} row will not cause overlap`, async () => {
-
 			const browser = await getBrowser();
 			const page = await getPage(browser);
 
@@ -96,11 +91,9 @@ describe('When using bootstrap', () => {
 			expect(rect_one.top).toBeGreaterThan(rect_four.top + 100);
 
 			browser.close();
-
 		}, timeout);
 
 		test(`three cards per ${rowType} row will not cause overlap`, async () => {
-
 			const browser = await getBrowser();
 			const page = await getPage(browser);
 
@@ -125,7 +118,6 @@ describe('When using bootstrap', () => {
 			expect(rect_one.top).toBeGreaterThan(rect_five.top + 100);
 
 			browser.close();
-
 		}, timeout);
 	});
 });
