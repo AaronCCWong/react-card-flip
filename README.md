@@ -10,11 +10,18 @@ CSS goes to [David Walsh](https://davidwalsh.name/css-flip).
 
 Live demo: [Demo](https://aaronccwong.github.io/react-card-flip/)
 
-To build the examples locally, run:
+To build the examples locally with npm, run:
+
+```
+npm install
+npm run build-example && npm run start
+```
+
+To build the examples locally with yarn, run:
 
 ```
 yarn install
-yarn start
+yarn build-example && yarn start
 ```
 
 Then [`localhost:8080`](http://localhost:8080) should open in a browser. If not
@@ -22,11 +29,16 @@ you can go to that directly.
 
 ## Installation
 
-The easiest way to use react-card-flip is to install it from NPM with the
-command:
+To use react-card-flip, install it from NPM with npm using the command:
 
 ```
-yarn add react-card-flip
+npm install --save react-card-flip
+```
+
+To use react-card-flip, install it from NPM with yarn using the command:
+
+```
+yarn add --dev react-card-flip
 ```
 
 You can also use the standalone build by including `lib/react-card-flip.js` in
@@ -55,7 +67,7 @@ control whether to show the front or the back of the card.
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
+      this.state = {
       isFlipped: false
     };
     this.handleClick = this.handleClick.bind(this);
@@ -72,12 +84,12 @@ class App extends React.Component {
         <YOUR_FRONT_CCOMPONENT key="front">
           This is the front of the card.
           <button onClick={this.handleClick}>Click to flip</button>
-        </FrontComponent>
+        </YOUR_FRONT_CCOMPONENT>
 
         <YOUR_BACK_COMPONENT key="back">
           This is the back of the card.
           <button onClick={this.handleClick}>Click to flip</button>
-        </BackComponent>
+        </YOUR_BACK_COMPONENT>
       </ReactCardFlip>
     )
   }
@@ -108,22 +120,21 @@ component as the back of the card.
 
 ## Development (`src`, `lib` and the build process)
 
-**NOTE:** The source code for the component is in `src`. A transpiled CommonJS version (generated with Babel) is available in `lib` for use with node.js, browserify and webpack. A UMD bundle is also built to `dist`, which can be included without the need for any build system.
+**NOTE:** The source code for the component is in `src`. A transpiled CommonJS version (generated with Babel) is available in `lib` for use with node.js, browserify and webpack. A UMD bundle is also built to `lib`, which can be included without the need for any build system.
 
-To build, watch and serve the examples (which will also watch the component source), run `yarn start`. If you just want to watch changes to `src` and rebuild `lib`, run `yarn watch` (this is useful if you are working with `npm link`).
+To build, watch and serve the examples (which will also watch the component source), run `npm run build-example && npm run start`.
 
 ## Testing
 
 To run tests for this project run one of the following commands:
 
-- `yarn test` - Runs tests then exits
-- `yarn test:watch` - Runs tests in watch mode
-- `yarn test:coverage` - Runs tests and creates a coverage report
+- `npm run test` - Runs tests then exits
+- `npm run test:watch` - Runs tests in watch mode
+- `npm run test:coverage` - Runs tests and creates a coverage report
 
 ## Contributing
 
-Fork this repo, add your proposed features and make a pull request. I will
-review as soon as possible.
+Fork this repo, add your proposed features and make a pull request. I will review as soon as possible.
 
 ## License
 
