@@ -4,9 +4,9 @@
   "description": "ReactCardFlip",
   "main": "./lib/react-card-flip.js",
   "scripts": {
-    "build": "webpack --env dev --config webpack.dist.js && webpack --env build --config webpack.dist.js",
-    "build-example": "webpack --env dev && webpack --env build",
-    "build-e2e": "webpack --env dev --config webpack.e2e.js && webpack --env build --config webpack.e2e.js",
+    "build": "webpack --env production --config webpack.dist.js",
+    "build-example": "webpack --env production",
+    "build-e2e": "webpack --env production --config webpack.e2e.js",
     "start": "webpack-dev-server --progress --colors --open",
     "test": "npm run build-e2e && jest",
     "test:coverage": "jest --coverage",
