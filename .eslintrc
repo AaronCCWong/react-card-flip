@@ -1,12 +1,15 @@
 {
   "parser": "babel-eslint",
   "env": {
-  	"browser": true,
-  	"node": true
+    "browser": true,
+    "node": true
   },
-  "plugins": [
-    "react"
-  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "plugins": ["react"],
   "rules": {
     "curly": [2, "multi-line"],
     "quotes": [2, "single", "avoid-escape"],

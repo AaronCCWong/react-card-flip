@@ -20,7 +20,7 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'file-loader'
           }
         ]
       }
@@ -40,7 +40,5 @@ module.exports = {
       chunks: 'all'
     }
   },
-  plugins: [
-    new webpack.LoaderOptionsPlugin({ debug: true })
-  ]
+  plugins: [new webpack.LoaderOptionsPlugin({ debug: true })]
 };

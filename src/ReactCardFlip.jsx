@@ -1,107 +1,102 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-class ReactCardFlip extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFlipped: this.props.isFlipped,
-      rotation: 0
-    };
-  }
+const ReactCardFlip = props => {
+  const {
+    flipDirection,
+    infinite,
+    flipSpeedFrontToBack,
+    flipSpeedBackToFront,
+    cardStyles: { front, back },
+    containerStyle,
+    cardZIndex
+  } = props;
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.isFlipped !== this.props.isFlipped) {
-      this.setState({ isFlipped: nextProps.isFlipped });
-      this.setState({ rotation: this.state.rotation + 180 });
+  const [isFlipped, setFlipped] = useState(props.isFlipped);
+  const [rotation, setRotation] = useState(0);
+
+  useEffect(() => {
+    if (props.isFlipped !== isFlipped) {
+      setFlipped(c => props.isFlipped);
+      setRotation(c => c + 180);
     }
-  }
+  }, [props.isFlipped]);
 
-  getComponent(key) {
-    return this.props.children.filter(component => {
+  const getComponent = key => {
+    return props.children.filter(component => {
       return component.key === key;
     });
-  }
+  };
 
-  render() {
-    const {
-      flipDirection,
-      infinite,
-      flipSpeedFrontToBack,
-      flipSpeedBackToFront,
-      cardStyles: { front, back },
-      containerStyle,
-      cardZIndex
-    } = this.props;
-    const { isFlipped, rotation } = this.state;
+  const frontRotateY = `rotateY(${
+    infinite ? rotation : isFlipped ? 180 : 0
+  }deg)`;
+  const backRotateY = `rotateY(${
+    infinite ? rotation + 180 : isFlipped ? 0 : -180
+  }deg)`;
+  const frontRotateX = `rotateX(${
+    infinite ? rotation : isFlipped ? 180 : 0
+  }deg)`;
+  const backRotateX = `rotateX(${
+    infinite ? rotation + 180 : isFlipped ? 0 : -180
+  }deg)`;
 
-    const frontRotateY = `rotateY(${
-      infinite ? rotation : isFlipped ? 180 : 0
-    }deg)`;
-    const backRotateY = `rotateY(${
-      infinite ? rotation + 180 : isFlipped ? 0 : -180
-    }deg)`;
-    const frontRotateX = `rotateX(${
-      infinite ? rotation : isFlipped ? 180 : 0
-    }deg)`;
-    const backRotateX = `rotateX(${
-      infinite ? rotation + 180 : isFlipped ? 0 : -180
-    }deg)`;
+  const styles = {
+    container: {
+      perspective: '1000px',
+      zIndex: `${cardZIndex}`
+    },
+    flipper: {
+      position: 'relative',
+      width: '100%',
+      height: '100%'
+    },
+    front: {
+      WebkitBackfaceVisibility: 'hidden',
+      backfaceVisibility: 'hidden',
+      left: '0',
+      position: isFlipped ? 'absolute' : 'relative',
+      top: '0',
+      transform: flipDirection === 'horizontal' ? frontRotateY : frontRotateX,
+      transformStyle: 'preserve-3d',
+      width: '100%',
+      height: '100%',
+      zIndex: '2',
+      transition: `${flipSpeedBackToFront}s`,
+      ...front
+    },
+    back: {
+      WebkitBackfaceVisibility: 'hidden',
+      backfaceVisibility: 'hidden',
+      left: '0',
+      position: isFlipped ? 'relative' : 'absolute',
+      transform: flipDirection === 'horizontal' ? backRotateY : backRotateX,
+      transformStyle: 'preserve-3d',
+      top: '0',
+      width: '100%',
+      height: '100%',
+      transition: `${flipSpeedFrontToBack}s`,
+      ...back
+    }
+  };
 
-    const styles = {
-      container: {
-        perspective: '1000px',
-        zIndex: `${cardZIndex}`
-      },
-      flipper: {
-        position: 'relative',
-        width: '100%',
-        height: '100%',
-      },
-      front: {
-        WebkitBackfaceVisibility: 'hidden',
-        backfaceVisibility: 'hidden',
-        left: '0',
-        position: isFlipped ? 'absolute' : 'relative',
-        top: '0',
-        transform: flipDirection === 'horizontal' ? frontRotateY : frontRotateX,
-        transformStyle: 'preserve-3d',
-        width: '100%',
-        height: '100%',
-        zIndex: '2',
-        transition: `${flipSpeedBackToFront}s`,
-        ...front
-      },
-      back: {
-        WebkitBackfaceVisibility: 'hidden',
-        backfaceVisibility: 'hidden',
-        left: '0',
-        position: isFlipped ? 'relative' : 'absolute',
-        transform: flipDirection === 'horizontal' ? backRotateY : backRotateX,
-        transformStyle: 'preserve-3d',
-        top: '0',
-        width: '100%',
-        height: '100%',
-        transition: `${flipSpeedFrontToBack}s`,
-        ...back
-      }
-    };
+  return (
+    <div
+      className="react-card-flip"
+      style={{ ...styles.container, ...containerStyle }}
+    >
+      <div className="react-card-flipper" style={styles.flipper}>
+        <div className="react-card-front" style={styles.front}>
+          {getComponent('front')}
+        </div>
 
-    return (
-      <div className="react-card-flip" style={{...styles.container, ...containerStyle}}>
-        <div className="react-card-flipper" style={styles.flipper}>
-          <div className="react-card-front" style={styles.front}>
-            {this.getComponent('front')}
-          </div>
-
-          <div className="react-card-back" style={styles.back}>
-            {this.getComponent('back')}
-          </div>
+        <div className="react-card-back" style={styles.back}>
+          {getComponent('back')}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 ReactCardFlip.propTypes = {
   cardStyles: PropTypes.shape({
