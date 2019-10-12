@@ -22,6 +22,9 @@
     "react/prop-types": "off",
 
     // not needed for certain React Functions
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    // dont care about camelcase for now.
+    "@typescript-eslint/camelcase": "off"
   }
 }

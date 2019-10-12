@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import ReactCardFlip from '../src/ReactCardFlip.jsx';
+import ReactCardFlip from '../src/ReactCardFlip';
 
 describe('Flipping', () => {
   it('flips from front to back when props change', () => {
@@ -102,6 +102,9 @@ describe('Rendering', () => {
   it('fails if not given two children', () => {
     expect(() => {
       mount(
+        // ignore this typescript error since this particular test case is expected to throw an error
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         <ReactCardFlip>
           <div key="front">
             <p id="front_text">Front</p>

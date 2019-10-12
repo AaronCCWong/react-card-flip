@@ -1,5 +1,5 @@
-const puppeteer = require('puppeteer');
-const path = require('path');
+import puppeteer from 'puppeteer';
+import path from 'path';
 const timeout = 30000;
 
 function getBrowser() {
