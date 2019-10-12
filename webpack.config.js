@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+let path = require('path');
+let webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -33,7 +33,7 @@ module.exports = {
     alias: {
       'react-card-flip': path.resolve(__dirname, './src/ReactCardFlip')
     },
-    extensions: ['.js', '.jsx', 'tsx', 'ts']
+    extensions: ['.js', '.jsx', '.tsx', '.ts']
   },
   optimization: {
     splitChunks: {

@@ -31,7 +31,7 @@ module.exports = {
     alias: {
       'react-card-flip': path.resolve(__dirname, './src/ReactCardFlip')
     },
-    extensions: ['.js', '.jsx', 'tsx', 'ts']
+    extensions: ['.js', '.jsx', '.tsx', '.ts']
   },
   optimization: {
     splitChunks: {
