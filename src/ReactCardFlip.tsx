@@ -59,10 +59,13 @@ const ReactCardFlip: React.FC<Props> = props => {
     }
   }, [props.isFlipped]);
 
-  const getComponent = key => {
-    return props.children.filter((component: any) => {
-      return component.key === key;
-    });
+  const getComponent = (key: 0 | 1) => {
+    if (props.children.length !== 2) {
+      throw new Error(
+        'Component ReactCardFlip requires 2 children to function'
+      );
+    }
+    return props.children[key];
   };
 
   const frontRotateY = `rotateY(${
@@ -124,11 +127,11 @@ const ReactCardFlip: React.FC<Props> = props => {
     >
       <div className="react-card-flipper" style={styles.flipper}>
         <div className="react-card-front" style={styles.front}>
-          {getComponent('front')}
+          {getComponent(0)}
         </div>
 
         <div className="react-card-back" style={styles.back}>
-          {getComponent('back')}
+          {getComponent(1)}
         </div>
       </div>
     </div>
