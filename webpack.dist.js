@@ -1,17 +1,15 @@
-/* global __dirname, require, module*/
-
 const webpack = require('webpack');
 const path = require('path');
 const pkg = require('./package.json');
 
-let libraryName = pkg.name;
+const libraryName = pkg.name;
 
-let plugins = [], outputFile;
-outputFile = libraryName + '.js';
+const plugins = [];
+const outputFile = libraryName + '.js';
 
 const config = {
   mode: 'production',
-  entry: __dirname + '/src/ReactCardFlip.jsx',
+  entry: __dirname + '/src/ReactCardFlip.tsx',
   devtool: 'source-map',
   output: {
     path: __dirname + '/lib',
@@ -27,12 +25,12 @@ const config = {
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js)$/,
+        test: /(\.jsx|\.js|\.tsx|\.ts)$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/
       },
       {
-        test: /(\.jsx|\.js)$/,
+        test: /(\.jsx|\.js|\.tsx|\.ts)$/,
         loader: 'eslint-loader',
         exclude: /node_modules/
       }
@@ -40,7 +38,7 @@ const config = {
   },
   resolve: {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js', '.jsx']
+    extensions: ['.js', '.jsx', 'tsx', 'ts']
   },
   plugins: plugins
 };

@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
-const ReactCardFlip = props => {
+interface Props {
+  cardZIndex?: string;
+  containerStyle?: {};
+  isFlipped?: boolean;
+  flipSpeedBackToFront?: number;
+  flipSpeedFrontToBack?: number;
+  cardStyles?: { front?: {}; back?: {} };
+  infinite?: boolean;
+  flipDirection?: 'horizontal' | 'vertical';
+  children: [React.ReactNode, React.ReactNode];
+}
+
+const ReactCardFlip: React.FC<Props> = props => {
   const {
     flipDirection,
     infinite,
     flipSpeedFrontToBack,
     flipSpeedBackToFront,
-    cardStyles: { front, back },
+    cardStyles: {
+      front: {},
+      back: {}
+    },
     containerStyle,
     cardZIndex
   } = props;
@@ -17,13 +31,13 @@ const ReactCardFlip = props => {
 
   useEffect(() => {
     if (props.isFlipped !== isFlipped) {
-      setFlipped(c => props.isFlipped);
+      setFlipped(props.isFlipped);
       setRotation(c => c + 180);
     }
   }, [props.isFlipped]);
 
   const getComponent = key => {
-    return props.children.filter(component => {
+    return props.children.filter((component: any) => {
       return component.key === key;
     });
   };
@@ -41,7 +55,7 @@ const ReactCardFlip = props => {
     infinite ? rotation + 180 : isFlipped ? 0 : -180
   }deg)`;
 
-  const styles = {
+  const styles: any = {
     container: {
       perspective: '1000px',
       zIndex: `${cardZIndex}`
@@ -62,8 +76,8 @@ const ReactCardFlip = props => {
       width: '100%',
       height: '100%',
       zIndex: '2',
-      transition: `${flipSpeedBackToFront}s`,
-      ...front
+      transition: `${flipSpeedBackToFront}s`
+      //...front
     },
     back: {
       WebkitBackfaceVisibility: 'hidden',
@@ -75,8 +89,8 @@ const ReactCardFlip = props => {
       top: '0',
       width: '100%',
       height: '100%',
-      transition: `${flipSpeedFrontToBack}s`,
-      ...back
+      transition: `${flipSpeedFrontToBack}s`
+      //...back
     }
   };
 
@@ -96,48 +110,6 @@ const ReactCardFlip = props => {
       </div>
     </div>
   );
-};
-
-ReactCardFlip.propTypes = {
-  cardStyles: PropTypes.shape({
-    front: PropTypes.object,
-    back: PropTypes.object
-  }),
-  cardZIndex: PropTypes.string,
-  children: (props, propName, componentName) => {
-    if (React.Children.count(props[propName]) !== 2) {
-      return new Error(`${componentName} requires two children.`);
-    }
-  },
-  containerStyle: PropTypes.object,
-  flipDirection: (props, propName, componentName) => {
-    if (!props[propName]) {
-      return;
-    }
-
-    if (
-      !(
-        typeof props[propName] === 'string' || props[propName] instanceof String
-      )
-    ) {
-      return new Error(`${propName} requires a string.`);
-    }
-
-    if (
-      props[propName].toLowerCase() !== 'horizontal' &&
-      props[propName].toLowerCase() !== 'vertical'
-    ) {
-      return new Error(
-        `${propName} expects (horizontal|vertical), got ${props[
-          propName
-        ].toLowerCase()}`
-      );
-    }
-  },
-  flipSpeedBackToFront: PropTypes.number,
-  flipSpeedFrontToBack: PropTypes.number,
-  infinite: PropTypes.bool,
-  isFlipped: PropTypes.bool
 };
 
 ReactCardFlip.defaultProps = {
