@@ -25,7 +25,7 @@ class VerticalExample extends Component<any, any> {
         flipSpeedFrontToBack={0.1}
         flipDirection="vertical"
       >
-        <div key="front" style={this.props.styles.card}>
+        <div style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
             src="//static.pexels.com/photos/59523/pexels-photo-59523.jpeg"
@@ -34,7 +34,7 @@ class VerticalExample extends Component<any, any> {
           <button onClick={this.handleClick}>Flip Card</button>
         </div>
 
-        <div key="back" style={this.props.styles.card}>
+        <div style={this.props.styles.card}>
           <img
             style={this.props.styles.image}
             src="//img.buzzfeed.com/buzzfeed-static/static/2014-04/enhanced/webdr06/4/16/enhanced-11136-1396643149-13.jpg?no-auto"
