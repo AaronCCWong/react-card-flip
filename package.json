@@ -24,7 +24,7 @@
     "url": "https://github.com/AaronCCWong/react-card-flip/issues"
   },
   "homepage": "https://github.com/AaronCCWong/react-card-flip",
-  "files": ["lib/**/*"],
+  "files": ["lib/**/*", "index.d.ts"],
 
   "peerDependencies": {
     "react": "^16.8.6",
