@@ -7,7 +7,7 @@
     "build": "webpack --env production --config webpack.dist.js",
     "build-example": "webpack --env production",
     "build-e2e": "webpack --env production --config webpack.e2e.js",
-    "start": "webpack-dev-server --progress --colors --open",
+    "start": "yarn build-example && webpack-dev-server --progress --colors --open",
     "test": "yarn build-e2e && jest",
     "test:coverage": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",

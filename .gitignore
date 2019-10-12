@@ -30,4 +30,5 @@ node_modules
 
 yarn-lock.json
 e2e/build
+example/build
 lib
