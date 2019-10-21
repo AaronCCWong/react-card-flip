@@ -7,11 +7,11 @@
     "build": "webpack --env production --config webpack.dist.js",
     "build-example": "webpack --env production",
     "build-e2e": "webpack --env production --config webpack.e2e.js",
-    "start": "yarn build-example && webpack-dev-server --progress --colors --open",
-    "test": "yarn build-e2e && jest",
+    "start": "npm run build-example && webpack-dev-server --progress --colors --open",
+    "test": "npm run build-e2e && jest",
     "test:coverage": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test:watch": "yarn build-e2e && jest --watch"
+    "test:watch": "npm run build-e2e && jest --watch"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/AaronCCWong/react-card-flip",
   "files": ["lib/**/*", "index.d.ts"],
-
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
