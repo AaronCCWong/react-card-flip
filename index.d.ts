@@ -1,4 +1,4 @@
-interface ReactFlipCardProps {
+export interface ReactFlipCardProps {
   /**z-Index for the flip card. Used to help solve context stack issues while using multiple flip cards.
    * @default 'auto'
    */
@@ -32,3 +32,7 @@ interface ReactFlipCardProps {
   flipDirection?: 'horizontal' | 'vertical';
   children: [React.ReactNode, React.ReactNode];
 }
+
+const ReactFlipCard: React.FC<ReactFlipCardProps> = () => {};
+
+export default ReactFlipCard;
