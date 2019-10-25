@@ -38,7 +38,7 @@ npm install --save react-card-flip
 To use react-card-flip, install it from NPM with yarn using the command:
 
 ```
-yarn add --dev react-card-flip
+yarn add react-card-flip
 ```
 
 You can also use the standalone build by including `lib/react-card-flip.js` in
