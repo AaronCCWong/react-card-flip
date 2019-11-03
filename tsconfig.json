@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+
+    "noEmit": true,
+
+    "target": "esnext",
+    "module": "esnext",
+
+    "moduleResolution": "node",
+
+    "resolveJsonModule": true,
+
+    "skipLibCheck": true,
+
+    "allowSyntheticDefaultImports": true,
+
+    "forceConsistentCasingInFileNames": true,
+
+    "baseUrl": "./",
+    "paths": {
+      "react-card-flip": ["src/ReactCardFlip"]
+    }
+  }
+}

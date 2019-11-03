@@ -1,9 +1,10 @@
-var path = require('path');
-var webpack = require('webpack');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './example/example.js',
+  entry: './example/App.tsx',
   devtool: 'eval-source-map',
   output: {
     filename: '[name].js',
@@ -12,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(\.jsx|\.js)$/,
+        test: /(\.jsx|\.js|\.tsx|\.ts)$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/
       },
@@ -33,7 +34,7 @@ module.exports = {
     alias: {
       'react-card-flip': path.resolve(__dirname, './src/ReactCardFlip')
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.tsx', '.ts']
   },
   optimization: {
     splitChunks: {

@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true,
     "node": true
@@ -9,27 +9,22 @@
       "version": "detect"
     }
   },
-  "plugins": ["react"],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "react-hooks"],
   "rules": {
-    "curly": [2, "multi-line"],
-    "quotes": [2, "single", "avoid-escape"],
-    "jsx-quotes": 1,
-    "react/display-name": 0,
-    "react/jsx-boolean-value": 1,
-    "react/jsx-no-undef": 1,
-    "react/jsx-sort-props": 0,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "react/jsx-wrap-multilines": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-multi-comp": 1,
-    "react/no-unknown-property": 1,
-    "react/prop-types": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/self-closing-comp": 1,
-    "react/sort-prop-types": 1,
-    "semi": 2,
-    "strict": 0
+    // some any declarations are ok because we are SMART about object structures :)
+    "@typescript-eslint/no-explicit-any": "off",
+
+    // prop-types is not needed because we use Typescript!
+    "react/prop-types": "off",
+
+    // not needed for certain React Functions
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    // dont care about camelcase for now.
+    "@typescript-eslint/camelcase": "off"
   }
 }
