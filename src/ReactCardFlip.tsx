@@ -7,8 +7,8 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = props => {
     flipSpeedFrontToBack,
     flipSpeedBackToFront,
     cardStyles: {
-      front: {},
-      back: {}
+      front,
+      back
     },
     containerStyle,
     cardZIndex
@@ -35,16 +35,16 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = props => {
 
   const frontRotateY = `rotateY(${
     infinite ? rotation : isFlipped ? 180 : 0
-  }deg)`;
+    }deg)`;
   const backRotateY = `rotateY(${
     infinite ? rotation + 180 : isFlipped ? 0 : -180
-  }deg)`;
+    }deg)`;
   const frontRotateX = `rotateX(${
     infinite ? rotation : isFlipped ? 180 : 0
-  }deg)`;
+    }deg)`;
   const backRotateX = `rotateX(${
     infinite ? rotation + 180 : isFlipped ? 0 : -180
-  }deg)`;
+    }deg)`;
 
   const styles: any = {
     container: {
@@ -68,7 +68,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = props => {
       height: '100%',
       zIndex: '2',
       transition: `${flipSpeedBackToFront}s`,
-      ...props.cardStyles.front
+      ...front
     },
     back: {
       WebkitBackfaceVisibility: 'hidden',
@@ -81,7 +81,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = props => {
       width: '100%',
       height: '100%',
       transition: `${flipSpeedFrontToBack}s`,
-      ...props.cardStyles.back
+      ...back
     }
   };
 

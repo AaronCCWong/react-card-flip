@@ -17,14 +17,21 @@
     "type": "git",
     "url": "https://github.com/AaronCCWong/react-card-flip.git"
   },
-  "keywords": ["react", "react-component", "react-card-flip"],
+  "keywords": [
+    "react",
+    "react-component",
+    "react-card-flip"
+  ],
   "author": "Aaron Wong",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AaronCCWong/react-card-flip/issues"
   },
   "homepage": "https://github.com/AaronCCWong/react-card-flip",
-  "files": ["lib/**/*", "index.d.ts"],
+  "files": [
+    "lib/**/*",
+    "index.d.ts"
+  ],
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

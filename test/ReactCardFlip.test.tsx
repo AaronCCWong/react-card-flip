@@ -7,10 +7,10 @@ describe('Flipping', () => {
   it('flips from front to back when props change', () => {
     const wrapper = mount(
       <ReactCardFlip>
-        <div key="front">
+        <div>
           <p id="front_text">Front</p>
         </div>
-        <div key="back">
+        <div>
           <p id="back_text">Back</p>
         </div>
       </ReactCardFlip>
@@ -33,13 +33,42 @@ describe('Flipping', () => {
     );
   });
 
+  it('flips vertically', () => {
+    const wrapper = mount(
+      <ReactCardFlip flipDirection="vertical">
+        <div>
+          <p id="front_text">Front</p>
+        </div>
+        <div>
+          <p id="back_text">Back</p>
+        </div>
+      </ReactCardFlip>
+    );
+    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+      'rotateX(0deg)'
+    );
+    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+      'rotateX(-180deg)'
+    );
+
+    wrapper.setProps({ isFlipped: true });
+    wrapper.update();
+
+    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+      'rotateX(180deg)'
+    );
+    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+      'rotateX(0deg)'
+    );
+  });
+
   it('flips in the opposite direction on both sides when infinite prop is provided', () => {
     const wrapper = mount(
       <ReactCardFlip infinite>
-        <div key="front">
+        <div>
           <p id="front_text">Front</p>
         </div>
-        <div key="back">
+        <div>
           <p id="back_text">Back</p>
         </div>
       </ReactCardFlip>
@@ -71,10 +100,10 @@ describe('Flipping', () => {
   it('does nothing when rerendering with no isFlipped prop change', () => {
     const wrapper = mount(
       <ReactCardFlip isFlipped>
-        <div key="front">
+        <div>
           <p id="front_text">Front</p>
         </div>
-        <div key="back">
+        <div>
           <p id="back_text">Back</p>
         </div>
       </ReactCardFlip>
@@ -106,7 +135,7 @@ describe('Rendering', () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         <ReactCardFlip>
-          <div key="front">
+          <div>
             <p id="front_text">Front</p>
           </div>
         </ReactCardFlip>
@@ -125,10 +154,10 @@ describe('Rendering', () => {
     };
     const wrapper = mount(
       <ReactCardFlip isFlipped cardStyles={styles}>
-        <div key="front">
+        <div>
           <p id="front_text">Front</p>
         </div>
-        <div key="back">
+        <div>
           <p id="back_text">Back</p>
         </div>
       </ReactCardFlip>
