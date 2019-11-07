@@ -33,7 +33,7 @@ declare module 'react-card-flip' {
     flipDirection?: 'horizontal' | 'vertical';
     children: [React.ReactNode, React.ReactNode];
   }
+  const ReactFlipCard: React.FC<ReactFlipCardProps> = () => {};
 }
 
-const ReactFlipCard: React.FC<ReactFlipCardProps> = () => {};
 export default ReactCardFlip;

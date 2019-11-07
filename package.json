@@ -2,7 +2,8 @@
   "name": "react-card-flip",
   "version": "1.0.0",
   "description": "ReactCardFlip",
-  "main": "./lib/react-card-flip.js",
+  "main": "./lib/ReactCardFlip.jsx",
+  "types": "lib/ReactCardFlip.d.ts",
   "scripts": {
     "build": "tsc",
     "build-example": "webpack --env production",
