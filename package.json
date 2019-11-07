@@ -1,8 +1,8 @@
 {
   "name": "react-card-flip",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ReactCardFlip",
-  "main": "index.js",
+  "main": "./lib/ReactCardFlip.js",
   "types": "./lib/ReactCardFlip.d.ts",
   "scripts": {
     "build": "tsc",
