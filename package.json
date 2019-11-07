@@ -4,7 +4,7 @@
   "description": "ReactCardFlip",
   "main": "./lib/react-card-flip.js",
   "scripts": {
-    "build": "webpack --env production --config webpack.dist.js",
+    "build": "tsc",
     "build-example": "webpack --env production",
     "build-e2e": "webpack --env production --config webpack.e2e.js",
     "start": "npm run build-example && webpack-dev-server --progress --colors --open",
@@ -29,8 +29,7 @@
   },
   "homepage": "https://github.com/AaronCCWong/react-card-flip",
   "files": [
-    "lib/**/*",
-    "index.d.ts"
+    "lib/**/*"
   ],
   "peerDependencies": {
     "react": "^16.8.6",
