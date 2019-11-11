@@ -6,7 +6,7 @@ module.exports = {
   entry: './e2e/e2e.tsx',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, './e2e/build')
+    path: path.resolve(__dirname, 'build')
   },
   module: {
     rules: [
@@ -30,7 +30,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react-card-flip': path.resolve(__dirname, './src/ReactCardFlip')
+      'react-card-flip': path.resolve(__dirname, '../src/ReactCardFlip')
     },
     extensions: ['.js', '.jsx', '.tsx', '.ts']
   },

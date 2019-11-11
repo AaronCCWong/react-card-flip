@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'eval-source-map',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, './example/build')
+    path: path.resolve(__dirname, './build')
   },
   module: {
     rules: [
@@ -32,7 +32,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react-card-flip': path.resolve(__dirname, './src/ReactCardFlip')
+      'react-card-flip': path.resolve(__dirname, '../src/ReactCardFlip')
     },
     extensions: ['.js', '.jsx', '.tsx', '.ts']
   },
