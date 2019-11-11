@@ -65,5 +65,22 @@
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
     "yargs": "^14.2.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/tools/jest/jest.preprocess.js"
+    },
+    "testPathIgnorePatterns": [
+      "node_modules"
+    ],
+    "verbose": true,
+    "testURL": "http://localhost/",
+    "setupFiles": [
+      "./tools/jest/jest.setup"
+    ],
+    "collectCoverageFrom": [
+      "src/*.tsx"
+    ]
   }
 }
