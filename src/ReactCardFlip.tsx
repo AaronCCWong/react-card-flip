@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ReactFlipCardProps } from '../types/index';
 
 const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
   const {
+    cardStyles: {
+      back,
+      front,
+    },
+    cardZIndex,
+    containerStyle,
     flipDirection,
-    infinite,
     flipSpeedFrontToBack,
     flipSpeedBackToFront,
-    cardStyles: {
-      front,
-      back
-    },
-    containerStyle,
-    cardZIndex
+    infinite,
   } = props;
 
   const [isFlipped, setFlipped] = useState(props.isFlipped);
@@ -23,14 +23,14 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
   useEffect(() => {
     if (props.isFlipped !== isFlipped) {
       setFlipped(props.isFlipped);
-      setRotation(c => c + 180);
+      setRotation((c) => c + 180);
     }
   }, [props.isFlipped]);
 
   const getComponent = (key: 0 | 1) => {
     if (props.children.length !== 2) {
       throw new Error(
-        'Component ReactCardFlip requires 2 children to function'
+        'Component ReactCardFlip requires 2 children to function',
       );
     }
     return props.children[key];
@@ -50,42 +50,42 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     }deg)`;
 
   const styles: any = {
+    back: {
+      WebkitBackfaceVisibility: 'hidden',
+      backfaceVisibility: 'hidden',
+      height: '100%',
+      left: '0',
+      position: isFlipped ? 'relative' : 'absolute',
+      top: '0',
+      transform: flipDirection === 'horizontal' ? backRotateY : backRotateX,
+      transformStyle: 'preserve-3d',
+      transition: `${flipSpeedFrontToBack}s`,
+      width: '100%',
+      ...back,
+    },
     container: {
       perspective: '1000px',
-      zIndex: `${cardZIndex}`
+      zIndex: `${cardZIndex}`,
     },
     flipper: {
+      height: '100%',
       position: 'relative',
       width: '100%',
-      height: '100%'
     },
     front: {
       WebkitBackfaceVisibility: 'hidden',
       backfaceVisibility: 'hidden',
+      height: '100%',
       left: '0',
       position: isFlipped ? 'absolute' : 'relative',
       top: '0',
       transform: flipDirection === 'horizontal' ? frontRotateY : frontRotateX,
       transformStyle: 'preserve-3d',
-      width: '100%',
-      height: '100%',
-      zIndex: '2',
       transition: `${flipSpeedBackToFront}s`,
-      ...front
-    },
-    back: {
-      WebkitBackfaceVisibility: 'hidden',
-      backfaceVisibility: 'hidden',
-      left: '0',
-      position: isFlipped ? 'relative' : 'absolute',
-      transform: flipDirection === 'horizontal' ? backRotateY : backRotateX,
-      transformStyle: 'preserve-3d',
-      top: '0',
       width: '100%',
-      height: '100%',
-      transition: `${flipSpeedFrontToBack}s`,
-      ...back
-    }
+      zIndex: '2',
+      ...front,
+    },
   };
 
   return (
@@ -107,17 +107,17 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
 };
 
 ReactCardFlip.defaultProps = {
-  containerStyle: {},
   cardStyles: {
+    back: {},
     front: {},
-    back: {}
   },
   cardZIndex: 'auto',
+  containerStyle: {},
   flipDirection: 'horizontal',
   flipSpeedBackToFront: 0.6,
   flipSpeedFrontToBack: 0.6,
   infinite: false,
-  isFlipped: false
+  isFlipped: false,
 };
 
 export default ReactCardFlip;
