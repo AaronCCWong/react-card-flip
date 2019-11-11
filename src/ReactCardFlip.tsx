@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 
-const ReactCardFlip: React.FC<ReactFlipCardProps> = props => {
+import { ReactFlipCardProps } from '../types/index';
+
+const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
   const {
     flipDirection,
     infinite,

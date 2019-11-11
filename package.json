@@ -1,13 +1,15 @@
 {
   "name": "react-card-flip",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "description": "ReactCardFlip",
   "main": "./lib/ReactCardFlip.js",
   "types": "./lib/ReactCardFlip.d.ts",
   "scripts": {
+    "prebuild": "rm -rf lib",
     "build": "tsc",
     "build-example": "webpack --env production",
     "build-e2e": "webpack --env production --config webpack.e2e.js",
+    "postbuild": "cp types/index.d.ts lib/ReactCardFlip.d.ts",
     "start": "npm run build-example && webpack-dev-server --progress --colors --open",
     "test": "npm run build-e2e && jest",
     "test:coverage": "jest --coverage",

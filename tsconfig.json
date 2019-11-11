@@ -1,23 +1,19 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "jsx": "react",
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./",
     "removeComments": true,
     "declaration": true,
-    "outDir": "./lib",
-    "paths": {
-      "react-card-flip": ["src/ReactCardFlip"]
-    }
+    "outDir": "lib"
   },
   "typeRoots": [
-    "./types"
+    "types"
   ],
   "exclude": [
     "node_modules",
