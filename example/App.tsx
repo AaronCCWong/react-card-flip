@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Example from './Example';
-import SlowerExample from './SlowerExample';
 import FasterExample from './FasterExample';
 import RevolvingExample from './RevolvingExample';
+import SlowerExample from './SlowerExample';
 import VerticalExample from './VerticalExample';
 
 const App = () => {

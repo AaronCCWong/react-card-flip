@@ -8,38 +8,39 @@ module.exports = {
   devtool: 'eval-source-map',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, './build')
+    path: path.resolve(__dirname, './build'),
   },
   module: {
     rules: [
       {
         test: /(\.jsx|\.js|\.tsx|\.ts)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules|bower_components)/,
       },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
-            loader: 'file-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'file-loader',
+          },
+        ],
+      },
+    ],
   },
   devServer: {
-    contentBase: path.join(__dirname, './example')
+    contentBase: path.resolve(__dirname, '.'),
+    open: true,
   },
   resolve: {
     alias: {
-      'react-card-flip': path.resolve(__dirname, '../src/ReactCardFlip')
+      'react-card-flip': path.resolve(__dirname, '../src/ReactCardFlip'),
     },
-    extensions: ['.js', '.jsx', '.tsx', '.ts']
+    extensions: ['.js', '.jsx', '.tsx', '.ts'],
   },
   optimization: {
     splitChunks: {
-      chunks: 'all'
-    }
+      chunks: 'all',
+    },
   },
-  plugins: [new webpack.LoaderOptionsPlugin({ debug: true })]
+  plugins: [new webpack.LoaderOptionsPlugin({ debug: true })],
 };
