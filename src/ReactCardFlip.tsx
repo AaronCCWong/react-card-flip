@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 import { ReactFlipCardProps } from '../types/index';
 
@@ -11,6 +11,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     },
     cardZIndex,
     containerStyle,
+    containerClassName,
     flipDirection,
     flipSpeedFrontToBack,
     flipSpeedBackToFront,
@@ -26,6 +27,14 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
       setRotation((c) => c + 180);
     }
   }, [props.isFlipped]);
+
+  const getContainerClassName = useMemo(() => {
+    let className = 'react-card-flip';
+    if (containerClassName) {
+      className += ` ${containerClassName}`;
+    }
+    return className;
+  }, [containerClassName]);
 
   const getComponent = (key: 0 | 1) => {
     if (props.children.length !== 2) {
@@ -90,7 +99,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
 
   return (
     <div
-      className="react-card-flip"
+      className={getContainerClassName}
       style={{ ...styles.container, ...containerStyle }}
     >
       <div className="react-card-flipper" style={styles.flipper}>

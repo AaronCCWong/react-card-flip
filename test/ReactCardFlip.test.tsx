@@ -170,4 +170,19 @@ describe('Rendering', () => {
       'fixed'
     );
   });
+
+  it('accepts a custom class name for the container', () => {
+    const wrapper = mount(
+      <ReactCardFlip containerClassName="test-class-name">
+        <div>
+          <p id="front_text">Front</p>
+        </div>
+        <div>
+          <p id="back_text">Back</p>
+        </div>
+      </ReactCardFlip>
+    );
+
+    expect(wrapper.find('test-class-name')).not.toBeNull();
+  });
 });

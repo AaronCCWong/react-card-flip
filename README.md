@@ -106,6 +106,7 @@ and one for the back of the card.
 | -------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | cardZIndex           | string | z-Index for the flip card. Used to help solve context stack issues while using multiple flip cards.                         | auto         |
 | containerStyle       | object | Extra css styling that can be applied to the container.                                                                     | {}           |
+| containerClassName   | string | Custom class name to be applied to the container.                                         | undefined     |
 | isFlipped            | bool   | False to show the front of the card, true to show the back                                                                  | undefined    |
 | flipSpeedBackToFront | number | The speed of the flip animation when the card flips from back to front, the higher the number the slower the flip animation | 0.6          |
 | flipSpeedFrontToBack | number | The speed of the flip animation when the card flips from front to back, the higher the number the slower the flip animation | 0.6          |
