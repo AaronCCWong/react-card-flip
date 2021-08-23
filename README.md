@@ -104,6 +104,7 @@ and one for the back of the card.
 
 | Props                | Type   | Description                                                                                                                 | Default      |
 | -------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| cardStyles           | object | `cardStyles.front` styles are applied to the front face component container and `cardStyles.back` styles are applied to the back face component container | undefined |
 | cardZIndex           | string | z-Index for the flip card. Used to help solve context stack issues while using multiple flip cards.                         | auto         |
 | containerStyle       | object | Extra css styling that can be applied to the container.                                                                     | {}           |
 | containerClassName   | string | Custom class name to be applied to the container.                                         | undefined     |
