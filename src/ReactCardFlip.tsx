@@ -22,9 +22,15 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
+    let isMounted = true
     if (props.isFlipped !== isFlipped) {
+      if (isMounted) {
       setFlipped(props.isFlipped);
       setRotation((c) => c + 180);
+      }
+    }
+    return () => {
+      isMounted = false
     }
   }, [props.isFlipped]);
 
