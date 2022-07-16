@@ -26,7 +26,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, './e2e')
+    static: './'
   },
   resolve: {
     alias: {
