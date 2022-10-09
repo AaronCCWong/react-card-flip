@@ -19,7 +19,7 @@ describe('Flipping', () => {
       'rotateY(0deg)'
     );
     expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-      'rotateY(-180deg)translateZ(1px)'
+      'rotateY(-180deg)'
     );
 
     wrapper.setProps({ isFlipped: true });
@@ -29,7 +29,7 @@ describe('Flipping', () => {
       'rotateY(180deg)'
     );
     expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-      'rotateY(0deg)translateZ(1px)'
+      'rotateY(0deg)'
     );
   });
 
@@ -48,7 +48,7 @@ describe('Flipping', () => {
       'rotateX(0deg)'
     );
     expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-      'rotateX(-180deg)translateZ(1px)'
+      'rotateX(-180deg)'
     );
 
     wrapper.setProps({ isFlipped: true });
@@ -58,7 +58,7 @@ describe('Flipping', () => {
       'rotateX(180deg)'
     );
     expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-      'rotateX(0deg)translateZ(1px)'
+      'rotateX(0deg)'
     );
   });
 
@@ -78,7 +78,7 @@ describe('Flipping', () => {
       'rotateY(0deg)'
     );
     expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-      'rotateY(180deg)translateZ(1px)'
+      'rotateY(180deg)'
     );
 
     let isFlipped = true;
@@ -90,7 +90,7 @@ describe('Flipping', () => {
         `rotateY(${0 + i * 180}deg)`
       );
       expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-        `rotateY(${180 + i * 180}deg)translateZ(1px)`
+        `rotateY(${180 + i * 180}deg)`
       );
 
       isFlipped = !isFlipped;
@@ -113,7 +113,7 @@ describe('Flipping', () => {
       'rotateY(180deg)'
     );
     expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-      'rotateY(0deg)translateZ(1px)'
+      'rotateY(0deg)'
     );
 
     wrapper.setProps({ isFlipped: true });
@@ -122,7 +122,7 @@ describe('Flipping', () => {
       'rotateY(180deg)'
     );
     expect(wrapper.find('.react-card-back').props().style.transform).toBe(
-      'rotateY(0deg)translateZ(1px)'
+      'rotateY(0deg)'
     );
   });
 });
