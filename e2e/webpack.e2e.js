@@ -3,9 +3,9 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './e2e/e2e.tsx',
   output: {
-    filename: '[name].js',
     path: path.resolve(__dirname, 'build')
   },
   module: {

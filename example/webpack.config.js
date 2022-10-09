@@ -7,8 +7,7 @@ module.exports = {
   entry: './example/App.tsx',
   devtool: 'eval-source-map',
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, './build'),
+    path: path.resolve(__dirname, './build')
   },
   module: {
     rules: [
@@ -28,7 +27,9 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.resolve(__dirname, '.'),
+    static: {
+      directory: path.join(__dirname, "./")
+    },
     open: true,
   },
   resolve: {
