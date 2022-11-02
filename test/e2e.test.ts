@@ -4,30 +4,30 @@ const timeout = 30000;
 
 function getBrowser() {
   return puppeteer.launch({
-    headless: true
+    headless: false
   });
 }
 
 async function getPage(browser) {
-  const page = await browser.newPage();
+  // const page = await browser.newPage();
 
-  page.emulate({
-    viewport: {
-      width: 500,
-      height: 2400
-    },
-    userAgent: ''
-  });
+  // page.emulate({
+  //   viewport: {
+  //     width: 500,
+  //     height: 2400
+  //   },
+  //   userAgent: ''
+  // });
 
-  await page.goto(`file:${path.join(__dirname, '../e2e/index.html')}`);
+  // await page.goto(`file:${path.join(__dirname, '../e2e/index.html')}`);
 
-  page.on('console', msg => {
-    for (let i = 0; i < msg.args.length; ++i) {
-      console.log(`${i}: ${msg.args[i]}`);
-    }
-  });
+  // page.on('console', msg => {
+  //   for (let i = 0; i < msg.args.length; ++i) {
+  //     console.log(`${i}: ${msg.args[i]}`);
+  //   }
+  // });
 
-  return page;
+  return null;
 }
 
 async function getCoordinates(id, page) {
