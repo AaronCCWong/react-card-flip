@@ -1,95 +1,109 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom';
 
 import ReactCardFlip from '../src/ReactCardFlip';
 
+const querySelectorHTML = (parent: HTMLElement, query: string): HTMLElement => {
+  return parent.querySelector(query) as HTMLElement;
+}
+
 describe('Flipping', () => {
   it('flips from front to back when props change', () => {
-    const wrapper = mount(
-      <ReactCardFlip>
-        <div>
-          <p id="front_text">Front</p>
-        </div>
-        <div>
-          <p id="back_text">Back</p>
-        </div>
-      </ReactCardFlip>
-    );
-    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+    const Card = ({isFlipped = false}) => {
+      return (
+        <ReactCardFlip isFlipped={isFlipped}>
+          <div>
+            <p id="front_text">Front</p>
+          </div>
+          <div>
+            <p id="back_text">Back</p>
+          </div>
+        </ReactCardFlip>
+      );
+    };
+
+    const { container, rerender } = render(<Card/>);
+
+    expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
       'rotateY(0deg)'
     );
-    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
       'rotateY(-180deg)'
     );
 
-    wrapper.setProps({ isFlipped: true });
-    wrapper.update();
+    rerender(<Card isFlipped={true}/>)
 
-    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
       'rotateY(180deg)'
     );
-    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
       'rotateY(0deg)'
     );
   });
 
   it('flips vertically', () => {
-    const wrapper = mount(
-      <ReactCardFlip flipDirection="vertical">
-        <div>
-          <p id="front_text">Front</p>
-        </div>
-        <div>
-          <p id="back_text">Back</p>
-        </div>
-      </ReactCardFlip>
-    );
-    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+    const Card = ({isFlipped = false}) => {
+      return (
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+          <div>
+            <p id="front_text">Front</p>
+          </div>
+          <div>
+            <p id="back_text">Back</p>
+          </div>
+        </ReactCardFlip>
+      );
+    };
+    const { container, rerender } = render(<Card/>);
+    expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
       'rotateX(0deg)'
     );
-    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
       'rotateX(-180deg)'
     );
 
-    wrapper.setProps({ isFlipped: true });
-    wrapper.update();
+    rerender(<Card isFlipped={true}/>);
 
-    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
       'rotateX(180deg)'
     );
-    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
       'rotateX(0deg)'
     );
   });
 
   it('flips in the opposite direction on both sides when infinite prop is provided', () => {
-    const wrapper = mount(
-      <ReactCardFlip infinite>
-        <div>
-          <p id="front_text">Front</p>
-        </div>
-        <div>
-          <p id="back_text">Back</p>
-        </div>
-      </ReactCardFlip>
-    );
+    const Card = ({isFlipped = false}) => {
+      return (
+        <ReactCardFlip isFlipped={isFlipped} infinite>
+          <div>
+            <p id="front_text">Front</p>
+          </div>
+          <div>
+            <p id="back_text">Back</p>
+          </div>
+        </ReactCardFlip>
+      );
+    };
 
-    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+    const { container, rerender } = render(<Card/>);
+
+    expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
       'rotateY(0deg)'
     );
-    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
       'rotateY(180deg)'
     );
 
     let isFlipped = true;
 
     for (let i = 1; i <= 5; i++) {
-      wrapper.setProps({ isFlipped });
-      wrapper.update();
-      expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+      rerender(<Card isFlipped={isFlipped}/>);
+      expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
         `rotateY(${0 + i * 180}deg)`
       );
-      expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+      expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
         `rotateY(${180 + i * 180}deg)`
       );
 
@@ -98,30 +112,34 @@ describe('Flipping', () => {
   });
 
   it('does nothing when rerendering with no isFlipped prop change', () => {
-    const wrapper = mount(
-      <ReactCardFlip isFlipped>
-        <div>
-          <p id="front_text">Front</p>
-        </div>
-        <div>
-          <p id="back_text">Back</p>
-        </div>
-      </ReactCardFlip>
-    );
+    const Card = ({isFlipped = false}) => {
+      return (
+        <ReactCardFlip isFlipped>
+          <div>
+            <p id="front_text">Front</p>
+          </div>
+          <div>
+            <p id="back_text">Back</p>
+          </div>
+        </ReactCardFlip>
+      );
+    };
 
-    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+    const { container, rerender } = render(<Card/>);
+
+    expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
       'rotateY(180deg)'
     );
-    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
       'rotateY(0deg)'
     );
 
-    wrapper.setProps({ isFlipped: true });
+    rerender(<Card isFlipped={true}/>);
 
-    expect(wrapper.find('.react-card-front').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-front").style.transform).toBe(
       'rotateY(180deg)'
     );
-    expect(wrapper.find('.react-card-back').props().style.transform).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
       'rotateY(0deg)'
     );
   });
@@ -130,7 +148,7 @@ describe('Flipping', () => {
 describe('Rendering', () => {
   it('fails if not given two children', () => {
     expect(() => {
-      mount(
+      render(
         // ignore this typescript error since this particular test case is expected to throw an error
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
@@ -152,8 +170,8 @@ describe('Rendering', () => {
         position: 'fixed'
       }
     };
-    const wrapper = mount(
-      <ReactCardFlip isFlipped cardStyles={styles}>
+    const { container } = render(
+      <ReactCardFlip cardStyles={styles}>
         <div>
           <p id="front_text">Front</p>
         </div>
@@ -163,16 +181,16 @@ describe('Rendering', () => {
       </ReactCardFlip>
     );
 
-    expect(wrapper.find('.react-card-front').props().style.position).toBe(
+    expect(querySelectorHTML(container, ".react-card-front").style.position).toBe(
       'absolute'
     );
-    expect(wrapper.find('.react-card-back').props().style.position).toBe(
+    expect(querySelectorHTML(container, ".react-card-back").style.position).toBe(
       'fixed'
     );
   });
 
   it('accepts a custom class name for the container', () => {
-    const wrapper = mount(
+    const { container } = render(
       <ReactCardFlip containerClassName="test-class-name">
         <div>
           <p id="front_text">Front</p>
@@ -182,7 +200,6 @@ describe('Rendering', () => {
         </div>
       </ReactCardFlip>
     );
-
-    expect(wrapper.find('test-class-name')).not.toBeNull();
+    expect(container.querySelector('.test-class-name')).not.toBeNull();
   });
 });
