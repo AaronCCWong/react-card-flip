@@ -16,15 +16,15 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = ({
   infinite: false,
   isFlipped: false,
 }) => {
-  const [isFlipped, setFlipped] = useState(props.isFlipped);
+  const [isFlipped, setFlipped] = useState(isFlipped);
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
-    if (props.isFlipped !== isFlipped) {
-      setFlipped(props.isFlipped);
+    if (isFlipped !== isFlipped) {
+      setFlipped(isFlipped);
       setRotation((c) => c + 180);
     }
-  }, [props.isFlipped]);
+  }, [isFlipped]);
 
   const getContainerClassName = useMemo(() => {
     let className = 'react-card-flip';
@@ -35,12 +35,12 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = ({
   }, [containerClassName]);
 
   const getComponent = (key: 0 | 1) => {
-    if (props.children.length !== 2) {
+    if (children.length !== 2) {
       throw new Error(
         'Component ReactCardFlip requires 2 children to function',
       );
     }
-    return props.children[key];
+    return children[key];
   };
 
   const frontRotateY = `rotateY(${
