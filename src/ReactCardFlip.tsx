@@ -3,28 +3,43 @@ import { useEffect, useState, useMemo } from 'react';
 
 import { ReactFlipCardProps } from '../types/index';
 
-const ReactCardFlip: React.FC<ReactFlipCardProps> = ({
-  cardStyles: {
-    back: {},
-    front: {},
-  },
-  cardZIndex: 'auto',
-  containerStyle: {},
-  flipDirection: 'horizontal',
-  flipSpeedBackToFront: 0.6,
-  flipSpeedFrontToBack: 0.6,
-  infinite: false,
-  isFlipped: false,
-}) => {
+const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
+  const {
+    cardStyles: {
+      back,
+      front,
+    },
+    cardZIndex,
+    containerStyle,
+    containerClassName,
+    flipDirection,
+    flipSpeedFrontToBack,
+    flipSpeedBackToFront,
+    infinite,
+  } = { 
+    cardStyles: {
+      back: {},
+      front: {},
+    },
+    cardZIndex: 'auto',
+    containerStyle: {},
+    flipDirection: 'horizontal',
+    flipSpeedBackToFront: 0.6,
+    flipSpeedFrontToBack: 0.6,
+    infinite: false,
+    isFlipped: false,
+    ...props
+  }
+  
   const [isFlipped, setFlipped] = useState(isFlipped);
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
-    if (isFlipped !== isFlipped) {
-      setFlipped(isFlipped);
+    if (props.isFlipped !== isFlipped) {
+      setFlipped(props.isFlipped);
       setRotation((c) => c + 180);
     }
-  }, [isFlipped]);
+  }, [props.isFlipped]);
 
   const getContainerClassName = useMemo(() => {
     let className = 'react-card-flip';
@@ -35,12 +50,12 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = ({
   }, [containerClassName]);
 
   const getComponent = (key: 0 | 1) => {
-    if (children.length !== 2) {
+    if (props.children.length !== 2) {
       throw new Error(
         'Component ReactCardFlip requires 2 children to function',
       );
     }
-    return children[key];
+    return props.children[key];
   };
 
   const frontRotateY = `rotateY(${
