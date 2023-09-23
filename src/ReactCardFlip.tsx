@@ -3,21 +3,19 @@ import { useEffect, useState, useMemo } from 'react';
 
 import { ReactFlipCardProps } from '../types/index';
 
-const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
-  const {
-    cardStyles: {
-      back,
-      front,
-    },
-    cardZIndex,
-    containerStyle,
-    containerClassName,
-    flipDirection,
-    flipSpeedFrontToBack,
-    flipSpeedBackToFront,
-    infinite,
-  } = props;
-
+const ReactCardFlip: React.FC<ReactFlipCardProps> = ({
+  cardStyles: {
+    back: {},
+    front: {},
+  },
+  cardZIndex: 'auto',
+  containerStyle: {},
+  flipDirection: 'horizontal',
+  flipSpeedBackToFront: 0.6,
+  flipSpeedFrontToBack: 0.6,
+  infinite: false,
+  isFlipped: false,
+}) => {
   const [isFlipped, setFlipped] = useState(props.isFlipped);
   const [rotation, setRotation] = useState(0);
 
@@ -113,20 +111,6 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
       </div>
     </div>
   );
-};
-
-ReactCardFlip.defaultProps = {
-  cardStyles: {
-    back: {},
-    front: {},
-  },
-  cardZIndex: 'auto',
-  containerStyle: {},
-  flipDirection: 'horizontal',
-  flipSpeedBackToFront: 0.6,
-  flipSpeedFrontToBack: 0.6,
-  infinite: false,
-  isFlipped: false,
 };
 
 export default ReactCardFlip;
