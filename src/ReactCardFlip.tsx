@@ -32,15 +32,15 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     ...props
   }
   
-  const [isFlipped, setFlipped] = useState(isFlipped);
+  const [isFlippedState, setFlipped] = useState(isFlipped);
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
-    if (isFlipped !== isFlipped) {
+    if (isFlipped !== isFlippedState) {
       setFlipped(isFlipped);
       setRotation((c) => c + 180);
     }
-  }, [props.isFlipped]);
+  }, [isFlipped]);
 
   const getContainerClassName = useMemo(() => {
     let className = 'react-card-flip';
