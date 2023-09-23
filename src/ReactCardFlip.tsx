@@ -28,7 +28,8 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     flipSpeedBackToFront: 0.6,
     flipSpeedFrontToBack: 0.6,
     infinite: false,
-    isFlipped: false
+    isFlipped: false,
+    ...props
   }
   
   const [isFlipped, setFlipped] = useState(isFlipped);
