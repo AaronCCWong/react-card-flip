@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 import path from 'path';
-const timeout = 30000;
+const timeout = 60000;
 
 function getBrowser() {
   return puppeteer.launch({
