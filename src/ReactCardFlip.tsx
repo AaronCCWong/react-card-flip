@@ -87,11 +87,11 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
       ...back,
     },
     container: {
-      perspective: '1000px',
       zIndex: `${cardZIndex}`,
     },
     flipper: {
       height: '100%',
+      perspective: '1000px',
       position: 'relative',
       width: '100%',
     },
