@@ -29,7 +29,7 @@ describe('Flipping', () => {
       'rotateY(0deg)'
     );
     expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-      'rotateY(-180deg)'
+      'rotateY(-180deg) translateZ(1px)'
     );
 
     rerender(<Card isFlipped={true}/>)
@@ -38,7 +38,7 @@ describe('Flipping', () => {
       'rotateY(180deg)'
     );
     expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-      'rotateY(0deg)'
+      'rotateY(0deg) translateZ(1px)'
     );
   });
 
@@ -60,7 +60,7 @@ describe('Flipping', () => {
       'rotateX(0deg)'
     );
     expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-      'rotateX(-180deg)'
+      'rotateX(-180deg) translateZ(1px)'
     );
 
     rerender(<Card isFlipped={true}/>);
@@ -69,7 +69,7 @@ describe('Flipping', () => {
       'rotateX(180deg)'
     );
     expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-      'rotateX(0deg)'
+      'rotateX(0deg) translateZ(1px)'
     );
   });
 
@@ -93,7 +93,7 @@ describe('Flipping', () => {
       'rotateY(0deg)'
     );
     expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-      'rotateY(180deg)'
+      'rotateY(180deg) translateZ(1px)'
     );
 
     let isFlipped = true;
@@ -104,7 +104,7 @@ describe('Flipping', () => {
         `rotateY(${0 + i * 180}deg)`
       );
       expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-        `rotateY(${180 + i * 180}deg)`
+        `rotateY(${180 + i * 180}deg) translateZ(1px)`
       );
 
       isFlipped = !isFlipped;
@@ -131,7 +131,7 @@ describe('Flipping', () => {
       'rotateY(180deg)'
     );
     expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-      'rotateY(0deg)'
+      'rotateY(0deg) translateZ(1px)'
     );
 
     rerender(<Card isFlipped={true}/>);
@@ -140,7 +140,7 @@ describe('Flipping', () => {
       'rotateY(180deg)'
     );
     expect(querySelectorHTML(container, ".react-card-back").style.transform).toBe(
-      'rotateY(0deg)'
+      'rotateY(0deg) translateZ(1px)'
     );
   });
 });

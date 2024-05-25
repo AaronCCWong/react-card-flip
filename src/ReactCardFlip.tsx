@@ -17,7 +17,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     flipSpeedBackToFront,
     infinite,
     isFlipped,
-  } = { 
+  } = {
     cardStyles: {
       back: {},
       front: {},
@@ -31,7 +31,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     isFlipped: false,
     ...props
   }
-  
+
   const [isFlippedState, setFlipped] = useState(isFlipped);
   const [rotation, setRotation] = useState(0);
 
@@ -80,7 +80,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
       left: '0',
       position: isFlipped ? 'relative' : 'absolute',
       top: '0',
-      transform: flipDirection === 'horizontal' ? backRotateY : backRotateX,
+      transform: (flipDirection === 'horizontal' ? backRotateY : backRotateX) + ' translateZ(1px)',
       transformStyle: 'preserve-3d',
       transition: `${flipSpeedFrontToBack}s`,
       width: '100%',
