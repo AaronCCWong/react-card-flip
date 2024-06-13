@@ -113,6 +113,7 @@ and one for the back of the card.
 | flipSpeedFrontToBack | number | The speed of the flip animation when the card flips from front to back, the higher the number the slower the flip animation | 0.6          |
 | infinite             | bool   | False to rotate in opposite directions on both sides of the card, true to rotate in the same direction                      | false        |
 | flipDirection        | string | Direction of the card flip (options are: 'horizontal' or 'vertical' )                                                       | horizontal   |
+| mode3d               | bool   | False to disable perspective, making the flip not 3D.                                                                       | true         |
 
 ## Development (`src`, `lib` and the build process)
 
