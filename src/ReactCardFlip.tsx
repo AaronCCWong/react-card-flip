@@ -5,10 +5,7 @@ import { ReactFlipCardProps } from '../types/index';
 
 const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
   const {
-    cardStyles: {
-      back,
-      front,
-    },
+    cardStyles: { back, front },
     cardZIndex,
     containerStyle,
     containerClassName,
@@ -17,6 +14,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     flipSpeedBackToFront,
     infinite,
     isFlipped,
+    mode3d,
   } = {
     cardStyles: {
       back: {},
@@ -29,8 +27,9 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     flipSpeedFrontToBack: 0.6,
     infinite: false,
     isFlipped: false,
-    ...props
-  }
+    mode3d: true,
+    ...props,
+  };
 
   const [isFlippedState, setFlipped] = useState(isFlipped);
   const [rotation, setRotation] = useState(0);
@@ -53,7 +52,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
   const getComponent = (key: 0 | 1) => {
     if (props.children.length !== 2) {
       throw new Error(
-        'Component ReactCardFlip requires 2 children to function',
+        'Component ReactCardFlip requires 2 children to function'
       );
     }
     return props.children[key];
@@ -61,16 +60,16 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
 
   const frontRotateY = `rotateY(${
     infinite ? rotation : isFlipped ? 180 : 0
-    }deg)`;
+  }deg)`;
   const backRotateY = `rotateY(${
     infinite ? rotation + 180 : isFlipped ? 0 : -180
-    }deg)`;
+  }deg)`;
   const frontRotateX = `rotateX(${
     infinite ? rotation : isFlipped ? 180 : 0
-    }deg)`;
+  }deg)`;
   const backRotateX = `rotateX(${
     infinite ? rotation + 180 : isFlipped ? 0 : -180
-    }deg)`;
+  }deg)`;
 
   const styles: any = {
     back: {
@@ -92,7 +91,7 @@ const ReactCardFlip: React.FC<ReactFlipCardProps> = (props) => {
     },
     flipper: {
       height: '100%',
-      perspective: '1000px',
+      perspective: mode3d ? '1000px' : 'none',
       position: 'relative',
       width: '100%',
     },

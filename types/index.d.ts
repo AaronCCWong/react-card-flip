@@ -40,6 +40,11 @@ export interface ReactFlipCardProps {
    * @default 'horizontal'
    */
   flipDirection?: 'horizontal' | 'vertical';
+  /**
+   * If true, the card will flip in 3D mode. If false, the card will flip in 2D mode
+   * @default true
+   */
+  mode3d?: boolean;
   children: [React.ReactNode, React.ReactNode];
 }
 

@@ -6,6 +6,7 @@ import FasterExample from './FasterExample';
 import RevolvingExample from './RevolvingExample';
 import SlowerExample from './SlowerExample';
 import VerticalExample from './VerticalExample';
+import Non3DExample from './Non3dExample';
 
 const App = () => {
   const styles = {
@@ -53,6 +54,12 @@ const App = () => {
         <h3>Vertical flip</h3>
 
         <VerticalExample styles={styles} />
+      </section>
+
+      <section className="example-section">
+        <h3>Non 3D flip</h3>
+
+        <Non3DExample styles={styles} />
       </section>
     </div>
   );
